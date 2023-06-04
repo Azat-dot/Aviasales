@@ -1,5 +1,6 @@
 const url = "http://localhost:3000/tickets";
 const axios = require('axios');
+const stopsNumbers = [0, 1, 2, 3]
 
 /////// get all tickets by fetch
 
@@ -9,20 +10,61 @@ async function getTodo() {
     return await response.json()
   }
   
+
+  let stops = getTodo().then(response => {
+    return response.filter(item => {
+
+    let segments = item.segments.filter(segment => segment.stops.length === `${stopsNumbers}`);
+
+    return segments.length === item.segments.length
+   })
+   })
+  stops.then(response => console.log(response));
+
+
  let noStops = getTodo().then(response => {
-     response.filter(item => {
-      item.segments.filter(segment => console.log(segment.stops.length === 0))
+     return response.filter(item => {
+
+     let segments = item.segments.filter(segment => segment.stops.length === 0);
+
+     return segments.length === item.segments.length
     })
     })
+   noStops.then(response => console.log(response));
+
 
   let oneStop = getTodo().then(response => {
-    response.filter(item => {
-     item.segments.filter(segment => segment.stops.length === 1)
-   })
-   })
-   console.log(noStops);
-   console.log(oneStop);
+    return response.filter(item => {
 
+     let segments = item.segments.filter(segment => segment.stops.length === 1);
+     
+     return segments.length === item.segments.length
+   })
+   })
+  // oneStop.then(response => console.log(response));
+
+
+  let twoStops = getTodo().then(response => {
+    return response.filter(item => {
+
+    let segments = item.segments.filter(segment => segment.stops.length === 2)
+    
+    return segments.length === item.segments.length
+  })
+  })
+  // twoStops.then(response => console.log(response));
+
+
+
+let threeStops = getTodo().then(response => {
+  return response.filter(item => {
+
+   let segments = item.segments.filter(segment => segment.stops.length === 3)
+   
+   return segments.length === item.segments.length
+ })
+ })
+ threeStops.then(response => console.log(response));
 
 
 // fetch(url)
