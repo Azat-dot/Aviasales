@@ -3,13 +3,27 @@ const axios = require('axios');
 
 /////// get all tickets by fetch
 
-// async function getTodo() {
-//     let response = await fetch(url);
+async function getTodo() {
+    let response = await fetch(url);
   
-//     return await response.json()
-//   }
+    return await response.json()
+  }
   
-//   getTodo().then(response => console.log(response));
+ let noStops = getTodo().then(response => {
+     response.filter(item => {
+      item.segments.filter(segment => console.log(segment.stops.length === 0))
+    })
+    })
+
+  let oneStop = getTodo().then(response => {
+    response.filter(item => {
+     item.segments.filter(segment => segment.stops.length === 1)
+   })
+   })
+   console.log(noStops);
+   console.log(oneStop);
+
+
 
 // fetch(url)
 //   .then((response) => response.json())
@@ -26,8 +40,8 @@ const axios = require('axios');
 // getUser()
 
 
-axios.get("http://localhost:3000/tickets?price=42564")
-  .then(function (response) {
-    console.log(response.data);
-  })
+// axios.get("http://localhost:3000/tickets?price=42564")
+//   .then(function (response) {
+//     console.log(response.data);
+//   })
   
