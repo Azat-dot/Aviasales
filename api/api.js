@@ -23,21 +23,64 @@ async function getTodo() {
 
 let fastest = getTodo().then(response => {
 
-  // sort((a, b) => a.duration - b.duration)
+  
+  // console.log(response.slice(0, 5));
 
-  return response.filter(item => {
+    return response.filter(item => {
 
-        function sumDuration(a, b) {
-          return a.duration + b.duration
-        }
-    let duration = item.segments.reduce(sumDuration, )
+      item.segments.reduce((acc, currTicket) => acc + currTicket.duration, 0)
 
-    console.log(duration);
+      // item.sort((a, b) => a.duration - b.duration)
 
-    return 
+       return 
+      })
+    })
 
-  })
-})
+
+    fastest.then(response => (response));
+
+
+
+
+    // const topSix = {[
+    //   {[
+    //   { name: "Nigeria", position: "1st", points: 43 },
+    //   { name: "England", position: "2nd", points: 37 },
+    //   { name: "USA", position: "3rd", points: 35 },
+    // ]},
+    // {[
+    //   { name: "Nigeria", position: "1st", points: 4 },
+    //   { name: "England", position: "2nd", points: 3 },
+    //   { name: "USA", position: "3rd", points: 3 },
+    // ]}
+    // ]}
+
+    const topSix = [[
+      { name: "Nigeria", position: "1st", points: 43 },
+      { name: "England", position: "2nd", points: 37 },
+      { name: "USA", position: "3rd", points: 35 },
+    ],
+    [
+      { name: "Nigeria", position: "1st", points: 43 },
+      { name: "England", position: "2nd", points: 37 },
+      { name: "USA", position: "3rd", points: 35 },
+    ]
+  ]
+  
+
+    const totalPoints = topSix.reduce((acc, currTeam) => acc + currTeam.points, 0);
+
+
+    console.log(totalPoints)
+
+
+
+
+    //     function sumDuration(a, b) {
+    //       return a.duration + b.duration
+    //     }
+    // let duration = item.segments.reduce(sumDuration, )
+    // response.sort((a, b) => a.segment.duration - b.segment.duration)
 
     // segments.sort((a, b) => a.duration - b.duration)
     // let duration = response.filter(segments => console.log(segments.duration))
@@ -47,7 +90,7 @@ let fastest = getTodo().then(response => {
   
   
   
-  fastest.then(response => (response));
+  
 
 /////////// Cheppest //////////////////////////////////////////////////////////////////
 
