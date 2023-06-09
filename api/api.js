@@ -6,8 +6,6 @@ const ticketsNumbers = 5
 
 
 
-
-
 /////// get all tickets by fetch
 
 async function getTodo() {
@@ -18,79 +16,21 @@ async function getTodo() {
 
 // getTodo().then(response => console.log(priceFilter (response, ticketsNumbers)))
 // getTodo().then(response => console.log(stops(response, stopsNumbers)))
+getTodo().then(response => console.log(fastest(response.slice(0, ticketsNumbers))))
+
 
 /////// Fastest //////////////////////////////////////////////////////////////////
 
-let fastest = getTodo().then(response => {
+function fastest (response) {
+  return response.sort((a, b) => {
+   
+    let aDuration = a.segments.reduce((prev, curr) => prev + curr.duration, 0)
+    let bDuration = b.segments.reduce((prev, curr) => prev + curr.duration, 0)
+    
+     return (aDuration - bDuration)
+  })
+}
 
-  
-  // console.log(response.slice(0, 5));
-
-    return response.filter(item => {
-
-      item.segments.reduce((acc, currTicket) => acc + currTicket.duration, 0)
-
-      // item.sort((a, b) => a.duration - b.duration)
-
-       return 
-      })
-    })
-
-
-    fastest.then(response => (response));
-
-
-
-
-    // const topSix = {[
-    //   {[
-    //   { name: "Nigeria", position: "1st", points: 43 },
-    //   { name: "England", position: "2nd", points: 37 },
-    //   { name: "USA", position: "3rd", points: 35 },
-    // ]},
-    // {[
-    //   { name: "Nigeria", position: "1st", points: 4 },
-    //   { name: "England", position: "2nd", points: 3 },
-    //   { name: "USA", position: "3rd", points: 3 },
-    // ]}
-    // ]}
-
-    const topSix = [[
-      { name: "Nigeria", position: "1st", points: 43 },
-      { name: "England", position: "2nd", points: 37 },
-      { name: "USA", position: "3rd", points: 35 },
-    ],
-    [
-      { name: "Nigeria", position: "1st", points: 43 },
-      { name: "England", position: "2nd", points: 37 },
-      { name: "USA", position: "3rd", points: 35 },
-    ]
-  ]
-  
-
-    const totalPoints = topSix.reduce((acc, currTeam) => acc + currTeam.points, 0);
-
-
-    console.log(totalPoints)
-
-
-
-
-    //     function sumDuration(a, b) {
-    //       return a.duration + b.duration
-    //     }
-    // let duration = item.segments.reduce(sumDuration, )
-    // response.sort((a, b) => a.segment.duration - b.segment.duration)
-
-    // segments.sort((a, b) => a.duration - b.duration)
-    // let duration = response.filter(segments => console.log(segments.duration))
-  
-    // response.sort( (a, b) => a.segment.duration - b.segment.duration)
-  
-  
-  
-  
-  
 
 /////////// Cheppest //////////////////////////////////////////////////////////////////
 
@@ -111,15 +51,100 @@ function priceFilter (response, ticketsNumbers ) {
 //    })
 
 // }
+
+
+
+
+////////// training //////////////////////////////////////////////////////////////////////////////////////////
+
+
+/////// Fastest //////////////////////////////////////////////////////////////////
+
+// let arr = [
+// [{"price": 42564}, {"price": 52564 }],
+// [{"price": 62564}, {"price": 52564 }]
+// ]
+
+// arr = arr.sort((a, b) => {
+//   console.log(arr.price);
+//   arr.reduce((prev, curr) => prev + curr, 0)
+//   if (a.price < b.price ){
+//     return -1;
+//   }
+// })
+
+
+
+// arr.sort((a, b) => {
+
+//   let priceTotal = arr.reduce((acc, currTicket) => acc + currTicket.price, 0)
+//   console.log(priceTotal);
+
+//   return priceTotal.a -priceTotal.b
+
+// } )
+
+// fastest = getTodo().then(response => {
+
+//   console.log(response.reduce((acc, currTicket) => acc + currTicket.duration, 0))
  
 
+//  response.price.sort((a, b) => a - b )
+
+//  console.log(response);
+
+
+
+  // console.log(response.slice(0, 5));
+
+    // return response.filter(item => {
+
+    //   console.log(item.segments.reduce((acc, currTicket) => acc + currTicket.duration, 0))
+
+      // item.sort((a, b) => a.duration - b.duration)
+
+      //  return 
+      // })
+    // })
+
+
+    // fastest.then(response => (response));
 
 
 
 
+    // const topSix = {[
+    //   {[
+    //   { name: "Nigeria", position: "1st", points: 43 },
+    //   { name: "England", position: "2nd", points: 37 },
+    //   { name: "USA", position: "3rd", points: 35 },
+    // ]},
+    // {[
+    //   { name: "Nigeria", position: "1st", points: 4 },
+    //   { name: "England", position: "2nd", points: 3 },
+    //   { name: "USA", position: "3rd", points: 3 },
+    // ]}
+    // ]}
 
 
 
+
+    //     function sumDuration(a, b) {
+    //       return a.duration + b.duration
+    //     }
+    // let duration = item.segments.reduce(sumDuration, )
+    // response.sort((a, b) => a.segment.duration - b.segment.duration)
+
+    // segments.sort((a, b) => a.duration - b.duration)
+    // let duration = response.filter(segments => console.log(segments.duration))
+  
+    // response.sort( (a, b) => a.segment.duration - b.segment.duration)
+  
+  
+  
+  
+  
+ 
 
 
 /////////// Cheppest //////////////////////////////////////////////////////////////////
