@@ -1,12 +1,6 @@
 const url = "http://localhost:3000/tickets";
-// const axios = require('axios');
-// const { get } = require('server/router');
-const stopsNumbers = 0
+const stopsNumbers = 3
 const ticketsNumbers = 5
-
-
-
-/////// get all tickets by fetch
 
 async function getTodo() {
     let response = await fetch(url);
@@ -14,9 +8,11 @@ async function getTodo() {
     return await response.json()
   }
 
-// getTodo().then(response => console.log(priceFilter (response, ticketsNumbers)))
-// getTodo().then(response => console.log(stops(response, stopsNumbers)))
-getTodo().then(response => console.log(fastest(response.slice(0, ticketsNumbers))))
+// getTodo().then(response => console.log(response))
+// getTodo().then(response => console.log(fastest(response.slice(0, ticketsNumbers))))
+// getTodo().then(response => console.log(chepest (response, ticketsNumbers)))
+getTodo().then(response => console.log(sortStops(response, stopsNumbers)))
+
 
 
 /////// Fastest //////////////////////////////////////////////////////////////////
@@ -32,17 +28,13 @@ function fastest (response) {
 }
 
 
-/////////// Cheppest //////////////////////////////////////////////////////////////////
-
-function priceFilter (response, ticketsNumbers ) {
+function cheppest (response, ticketsNumbers ) {
   response.sort( (a, b) => a.price - b.price )
 
   return response.slice(0, ticketsNumbers)
 } 
 
-////////////////////    Sort    //////////////////////////////////////////////////////////////////
-
-function stops(response, stopsNumbers) {
+function sortStops(response, stopsNumbers) {
   return response.filter(item => {
 
     let segments = item.segments.filter(segment => segment.stops.length === stopsNumbers);
@@ -51,3 +43,5 @@ function stops(response, stopsNumbers) {
    })
 
 }
+
+export { cheppest, fastest, sortStops};
