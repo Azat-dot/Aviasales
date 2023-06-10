@@ -1,0 +1,239 @@
+* {
+    font-family: sans-serif;
+}
+
+body {
+    background-color: rgb(229, 229, 229);
+    margin: 0;
+}
+
+
+
+/* .header  */
+
+.header {
+    display: flex;
+    margin: 0 auto;
+    min-width: 320px;
+    padding: 0 20px;
+}
+
+.logo {
+    margin: 0 auto;
+    width: 82px;
+    height: 89px;
+    text-align: center;
+}
+  
+
+/* main part */
+
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+
+/* sidebar */
+
+.options {
+    background: rgb(255, 255, 255);
+    width: 232px;
+    height: 252px;
+    top: 160px;
+    left: 103px;
+    margin-right: 20px;
+}
+
+.options h3 {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 12px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-left: 20px;  
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.options label {
+    margin-top: 20px;
+    position: relative;
+    margin-left: 50px;
+    cursor: pointer;
+}
+.options label:hover {
+    background: #f1f1f1;
+}
+
+.visually-hidden{
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+}
+
+.checker {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    margin-left: -30px;
+    background-image: url('/Checkbox_off.svg');
+}
+
+.input:checked ~ .checker{
+    background-image: url("/Checkbox_on.svg");
+}
+
+/* tickets and btn*/
+
+.results {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(229, 229, 229);
+    min-width: 502px;
+}
+
+.results-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    
+}
+
+.btn {
+    background-color: #fff;
+    border: 1px solid rgb(223, 229, 236);
+    border-image: initial;
+    padding: 15px;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 20px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    text-align: center;
+    border-radius: 5px 0px 0px 5px;
+    cursor: pointer;
+    outline: none;
+    width: 251px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: rgb(33, 150, 243);
+    border-color:#2196f3;
+    color: white;
+  }
+
+  .btn_active{
+    background-color: rgb(33, 150, 243);
+    border-color:#2196f3;
+    color: white;
+  }
+
+
+
+
+
+
+
+/* .ticket {
+    display: flex;
+    background: rgb(255, 255, 255);
+    margin-top: 20px;
+}  */
+
+
+.tickets {
+    width: 100%;
+  
+
+  }
+  
+  .tickets__sort {
+    margin-bottom: 20px;
+  }
+  
+  .tickets__item {
+    margin-bottom: 20px;
+  }
+  .tickets__item:last-child {
+    margin-bottom: 0;
+  }
+
+.ticket {
+    background-color: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+  }
+  
+  .ticket__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    width: 100%;
+  }
+  
+  .ticket__price {
+    color: #2196f3;;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 24px;
+    margin: 0;
+  }
+
+  
+  .ticket__row {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+    width: 50%;
+  }
+  
+  .ticket__row:last-child {
+    margin-bottom: 0;
+  }
+
+  .ticket__col {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+
+  
+  .ticket__label {
+    color: #a0b0b9;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 18px;
+    letter-spacing: 0.5px;
+    margin: 0;
+  }
+  
+  .ticket__value {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    margin: 0;
+  }
+
+  .logo {
+    margin: 0 auto;
+    width: 82px;
+    height: 89px;
+  } 

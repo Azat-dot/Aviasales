@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,300" rel="stylesheet" type="text/css">
+    <link href="styles.css" rel="stylesheet" >
+    <title>Aviaslaes</title>
+</head>
+<body>
+
+    <div class="header"> 
+        <img class=logo src="Logo.svg" alt="Logo">
+    </div>
+
+    <div class="container">
+        <div class="options">
+            <h3>КОЛИЧЕСТВО ПЕРЕСАДОК</h3>
+
+        <form>
+            <label> 
+                <input type="checkbox"  class="input visually-hidden" >
+                <span class="checker"></span>Все
+            </label>
+            <label> 
+                <input type="checkbox"  class="input visually-hidden" >
+                <span class="checker"></span>Без пересадок
+            </label>
+            <label> 
+                <input type="checkbox"  class="input visually-hidden" >
+                <span class="checker"></span>1 пересадка
+            </label>
+            <label> 
+                <input type="checkbox"  class="input visually-hidden" >
+                <span class="checker"></span>2 пересадки
+            </label>
+            <label> 
+                <input type="checkbox"  class="input visually-hidden" >
+                <span class="checker"></span>3 пересадки
+            </label>
+            
+        </form>
+                   
+        </div>
+
+        <div class="results">
+            <div class="results-container"> 
+                    <div>
+                        <button id="cheap-btn" class="cheap-btn btn btn_active">
+                            САМЫЙ ДЕШЕВЫЙ
+                        </button>
+                    </div>
+                    
+                    <div>
+                        <button id="quick-btn" class="quick-btn btn ">
+                            САМЫЙ БЫСТРЫЙ
+                        </button>
+                    </div>
+            </div>
+
+         
+                
+                    
+            <div class="ticket">
+                <div class="top">
+                    <a href="">Price</a>
+                    <a href="">Logo</a>
+                </div>
+                <div class="details">
+                    <a href="">origin</a>
+                    <a href="">time</a>
+                    <a href="">destination</a>
+                    <a href="">time</a>
+                    <a href="">duration</a>
+                    <a href="">transfer</a>
+                </div> 
+            </div>
+
+        </div>
+
+        
+
+        
+
+    </div>
+
+    <script src="script.js" ></script>
+</body>
+</html>
