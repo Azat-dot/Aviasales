@@ -1,21 +1,20 @@
-const url = "http://localhost:3000/tickets";
-const stopsNumbers = 3
-const ticketsNumbers = 5
+import { URL, STOPS_NUMBER, TICKETS_NUMBERS } from "./constant";
+
+
+// const stopsNumbers = 3
+// const ticketsNumbers = 5
 
 async function getTodo() {
-    let response = await fetch(url);
+    let response = await fetch(URL);
   
     return await response.json()
   }
 
 // getTodo().then(response => console.log(response))
-// getTodo().then(response => console.log(fastest(response.slice(0, ticketsNumbers))))
-// getTodo().then(response => console.log(chepest (response, ticketsNumbers)))
-getTodo().then(response => console.log(sortStops(response, stopsNumbers)))
+getTodo().then(response => console.log(fastest(response.slice(0, TICKETS_NUMBERS))))
+getTodo().then(response => console.log(cheapest (response, TICKETS_NUMBERS)))
+getTodo().then(response => console.log(sortStops(response, STOPS_NUMBER)))
 
-
-
-/////// Fastest //////////////////////////////////////////////////////////////////
 
 function fastest (response) {
   return response.sort((a, b) => {
@@ -28,7 +27,7 @@ function fastest (response) {
 }
 
 
-function cheppest (response, ticketsNumbers ) {
+function cheapest (response, TICKETS_NUMBERS ) {
   response.sort( (a, b) => a.price - b.price )
 
   return response.slice(0, ticketsNumbers)
@@ -44,4 +43,4 @@ function sortStops(response, stopsNumbers) {
 
 }
 
-export { cheppest, fastest, sortStops};
+export { cheapest, fastest, sortStops};

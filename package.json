@@ -8,7 +8,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack"
-  },
+    },
   "dependencies": {
     "json": "^11.0.0",
     "node-fetch": "^3.3.1",
@@ -18,5 +18,8 @@
     "webpack": "^5.84.1",
     "webpack-cli": "^5.1.1"
   },
+
   "description": ""
+    
+
 }
