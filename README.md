@@ -1,4 +1,9 @@
 
+Usage json server
+
+json-server json.db
+
+
 Install
 
 npm i
@@ -7,3 +12,4 @@ npm i
 Usage
 
 npm run start
+
