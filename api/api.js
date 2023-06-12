@@ -1,7 +1,7 @@
-import { URL, STOPS_NUMBER, TICKETS_NUMBERS } from "./constant";
+import { URL, TICKETS_NUMBERS } from "./constant";
 
 
-// const stopsNumbers = 3
+const stopsNumbers = 3
 // const ticketsNumbers = 5
 
 async function getTodo() {
@@ -10,24 +10,25 @@ async function getTodo() {
     return await response.json()
   }
 
-// getTodo().then(response => console.log(response))
-getTodo().then(response => console.log(fastest(response.slice(0, TICKETS_NUMBERS))))
-getTodo().then(response => console.log(cheapest (response, TICKETS_NUMBERS)))
-getTodo().then(response => console.log(sortStops(response, STOPS_NUMBER)))
+getTodo().then(response => console.log(response))
+// getTodo().then(response => console.log(fastest(response, TICKETS_NUMBERS)))
+// getTodo().then(response => console.log(cheapest (response, TICKETS_NUMBERS)))
+// getTodo().then(response => console.log(sortStops(response, stopsNumbers)))
 
 
-function fastest (response) {
-  return response.sort((a, b) => {
+function fastest (response, ticketsNumbers) {
+   response.sort((a, b) => {
    
     let aDuration = a.segments.reduce((prev, curr) => prev + curr.duration, 0)
     let bDuration = b.segments.reduce((prev, curr) => prev + curr.duration, 0)
     
      return (aDuration - bDuration)
   })
+  return response.slice(0, ticketsNumbers)
 }
 
 
-function cheapest (response, TICKETS_NUMBERS ) {
+function cheapest (response, ticketsNumbers ) {
   response.sort( (a, b) => a.price - b.price )
 
   return response.slice(0, ticketsNumbers)
