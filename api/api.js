@@ -1,8 +1,9 @@
 import { URL, TICKETS_NUMBERS } from "./constant.js";
+// const URL = "http://localhost:3000/tickets";
+// const TICKETS_NUMBERS = 5
 
 
-const stopsNumbers = 3
-// const ticketsNumbers = 5
+const STOPS_NUMBERS = 3
 
 async function getTickets() {
     let response = await fetch(URL);
@@ -11,12 +12,12 @@ async function getTickets() {
   }
 
 getTickets().then(response => console.log(response))
-getTodo().then(response => console.log(fastest(response, TICKETS_NUMBERS)))
-getTodo().then(response => console.log(cheapest (response, TICKETS_NUMBERS)))
-getTodo().then(response => console.log(sortStops(response, stopsNumbers)))
+getTickets().then(response => console.log(fastest(response, TICKETS_NUMBERS)))
+getTickets().then(response => console.log(cheapest (response, TICKETS_NUMBERS)))
+getTickets().then(response => console.log(sortStops(response, STOPS_NUMBERS)))
 
 
-function fastest (response, ticketsNumbers) {
+function fastest (response, ticketsNumber = TICKETS_NUMBERS) {
    response.sort((a, b) => {
    
     let aDuration = a.segments.reduce((prev, curr) => prev + curr.duration, 0)
@@ -24,17 +25,17 @@ function fastest (response, ticketsNumbers) {
     
      return (aDuration - bDuration)
   })
-  return response.slice(0, ticketsNumbers)
+  return response.slice(0, ticketsNumber)
 }
 
 
-function cheapest (response, ticketsNumbers ) {
+function cheapest (response, ticketsNumber = TICKETS_NUMBERS ) {
   response.sort( (a, b) => a.price - b.price )
 
-  return response.slice(0, ticketsNumbers)
+  return response.slice(0, ticketsNumber)
 } 
 
-function sortStops(response, stopsNumbers) {
+function sortStops(response, stopsNumbers = STOPS_NUMBERS) {
   return response.filter(item => {
 
     let segments = item.segments.filter(segment => segment.stops.length === stopsNumbers);
@@ -44,4 +45,5 @@ function sortStops(response, stopsNumbers) {
 
 }
 
-export { cheapest, fastest, sortStops}; 
+
+export { cheapest, fastest, sortStops, getTickets };  

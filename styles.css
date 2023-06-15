@@ -64,12 +64,12 @@ form {
     position: relative;
     margin-left: 50px;
     cursor: pointer;
-}
-.options label:hover {
+} 
+ .options label:hover {
     background: #f1f1f1;
-}
+} 
 
-.visually-hidden{
+ .visually-hidden{
     position: absolute;
     width: 1px;
     height: 1px;
@@ -78,7 +78,7 @@ form {
     padding: 0;
     clip: rect(0 0 0 0);
     overflow: hidden;
-}
+} 
 
 .checker {
     position: absolute;
@@ -86,13 +86,13 @@ form {
     height: 20px;
     margin-left: -30px;
     background-image: url('/Checkbox_off.svg');
-}
+} 
 
 .input:checked ~ .checker{
     background-image: url("/Checkbox_on.svg");
 }
 
-/* tickets and btn*/
+/* tickets and btn */
 
 .results {
     display: flex;
