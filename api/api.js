@@ -1,19 +1,19 @@
-import { URL, TICKETS_NUMBERS } from "./constant";
+import { URL, TICKETS_NUMBERS } from "./constant.js";
 
 
 const stopsNumbers = 3
 // const ticketsNumbers = 5
 
-async function getTodo() {
+async function getTickets() {
     let response = await fetch(URL);
   
     return await response.json()
   }
 
-getTodo().then(response => console.log(response))
-// getTodo().then(response => console.log(fastest(response, TICKETS_NUMBERS)))
-// getTodo().then(response => console.log(cheapest (response, TICKETS_NUMBERS)))
-// getTodo().then(response => console.log(sortStops(response, stopsNumbers)))
+getTickets().then(response => console.log(response))
+getTodo().then(response => console.log(fastest(response, TICKETS_NUMBERS)))
+getTodo().then(response => console.log(cheapest (response, TICKETS_NUMBERS)))
+getTodo().then(response => console.log(sortStops(response, stopsNumbers)))
 
 
 function fastest (response, ticketsNumbers) {
@@ -44,4 +44,4 @@ function sortStops(response, stopsNumbers) {
 
 }
 
-export { cheapest, fastest, sortStops};
+export { cheapest, fastest, sortStops}; 

@@ -1,11 +1,14 @@
 import { cheapest, fastest, sortStops } from "./api";
 
-const sort = document.querySelector(".checker");
-const fastest = document.querySelector("#quick-btn");
-const cheapest = document.querySelector("#cheap-btn");
+const sortBtns = document.querySelectorAll(".checker");
+const fastestBtn = document.querySelector("#quick-btn");
+const cheapestBtn = document.querySelector("#cheap-btn");
 
 
 
-sort.onclick = sortStops()
-fastest.onclick = fastest()
-cheapest.onclick = cheapest()
+// sortBtns.forEach(element => {
+//     element.onclick = sortStops;
+// })
+
+fastestBtn.onclick = fastest
+cheapestBtn.onclick = cheapest
