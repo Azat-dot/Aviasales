@@ -6,6 +6,7 @@ const fastestBtn = document.querySelector("#quick-btn");
 const cheapestBtn = document.querySelector("#cheap-btn");
 const checkboxes = document.querySelectorAll(".input");
 
+
 checkboxes.forEach(e =>{
     e.onclick = getSortNumber;
 })
@@ -20,16 +21,12 @@ function getSortNumber(e) {
 //     e.onclick = onlyOne;
 // })
 
-function onlyOne(e) {
-    let checkboxes = document.getElementsByName('check')
-    checkboxes.forEach(item => {
-        if (item !== e.srcElement) item.checked = false
-    })
-}
-
-
-
-
+// function onlyOne(e) {
+//     let checkboxes = document.getElementsByName('check')
+//     checkboxes.forEach(item => {
+//         if (item !== e.srcElement) item.checked = false
+//     })
+// }
 
 
 const SwitcherValues = {
@@ -39,10 +36,10 @@ const SwitcherValues = {
 
 let switcher;
 
-// sortBtns.forEach(element => {
+sortBtns.forEach(element => {
 
-//     element.onclick = sortStops;
-// })
+    element.onclick = sortStops(tickets);
+})
 
 
 
