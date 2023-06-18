@@ -1,9 +1,12 @@
 import { URL, TICKETS_NUMBERS } from "./constant.js";
+import {getSortNumber} from "./app.js"
 // const URL = "http://localhost:3000/tickets";
 // const TICKETS_NUMBERS = 5
 
 
-const STOPS_NUMBERS = 3
+let STOPS_NUMBERS = getSortNumber()
+
+
 
 async function getTickets() {
     let response = await fetch(URL);
@@ -39,6 +42,7 @@ function sortStops(response, stopsNumbers = STOPS_NUMBERS) {
   return response.filter(item => {
 
     let segments = item.segments.filter(segment => segment.stops.length === stopsNumbers);
+    console.log(stopsNumbers);
 
     return segments.length === item.segments.length
    })

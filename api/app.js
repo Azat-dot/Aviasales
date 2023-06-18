@@ -13,8 +13,9 @@ checkboxes.forEach(e =>{
 
 function getSortNumber(e) {
     let sort = e.target.dataset.sortType
-    console.log(sort);
+    return sort
 }
+
 
 
 // checkboxes.forEach(e => {
@@ -37,8 +38,9 @@ const SwitcherValues = {
 let switcher;
 
 sortBtns.forEach(element => {
-
-    element.onclick = sortStops(tickets);
+    const sortStopsTickets = sortStops(tickets)
+    element.onclick = sortStopsTickets
+    console.log(sortStopsTickets);
 })
 
 
@@ -48,7 +50,7 @@ fastestBtn.onclick = (e) => {
     switcher = SwitcherValues.FASTEST;
     const fastestTickets = fastest(tickets)
     
-    const ticketsSorted = sortStops(fastestTickets);
+    // const ticketsSorted = sortStops(fastestTickets);
     // console.log(fastestTickets);
 
 }
@@ -57,8 +59,10 @@ cheapestBtn.onclick = (e) => {
     switcher = SwitcherValues.CHEAPEST
     const cheapestTickets = cheapest(tickets);
 
-    const ticketsSorted = sortStops(cheapestTickets);
+    // const ticketsSorted = sortStops(cheapestTickets);
     // console.log(cheapestTickets);
 }
+
+export {getSortNumber}
 
 console.log("app.js");
