@@ -1,11 +1,9 @@
-import { URL, TICKETS_NUMBERS } from "./constant.js";
-import {getSortNumber} from "./app.js"
+import { URL, TICKETS_NUMBERS, RETURN_ALL_TICKETS } from "./constant.js";
 // const URL = "http://localhost:3000/tickets";
 // const TICKETS_NUMBERS = 5
 
 
-let STOPS_NUMBERS = getSortNumber()
-
+let STOPS_NUMBERS = 3
 
 
 async function getTickets() {
@@ -38,11 +36,11 @@ function cheapest (response, ticketsNumber = TICKETS_NUMBERS ) {
   return response.slice(0, ticketsNumber)
 } 
 
-function sortStops(response, stopsNumbers = STOPS_NUMBERS) {
+function sortStops(response, stopsNumbers = STOPS_NUMBERS ) {
+      if (stopsNumbers == RETURN_ALL_TICKETS) return response
   return response.filter(item => {
 
     let segments = item.segments.filter(segment => segment.stops.length === stopsNumbers);
-    console.log(stopsNumbers);
 
     return segments.length === item.segments.length
    })
