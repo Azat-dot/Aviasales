@@ -1,10 +1,7 @@
 import { URL, TICKETS_NUMBERS, RETURN_ALL_TICKETS } from "./constant.js";
-// const URL = "http://localhost:3000/tickets";
-// const TICKETS_NUMBERS = 5
 
 
 let STOPS_NUMBERS = 3
-
 
 async function getTickets() {
     let response = await fetch(URL);

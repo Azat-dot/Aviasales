@@ -1,11 +1,10 @@
 import { cheapest, fastest, sortStops, getTickets } from "./api.js";
 
+
 const tickets = await getTickets();
 const fastestBtn = document.querySelector("#quick-btn");
 const cheapestBtn = document.querySelector("#cheap-btn");
 const checkboxes = document.querySelectorAll(".input");
-
-
 
 
 function getSortNumber(e) {
@@ -20,10 +19,12 @@ function onlyOne(e) {
     })
 }
 
+
 const SwitcherFastCheap = {
     CHEAPEST: 0,
     FASTEST: 1,
 }
+let switcherFastCheap = SwitcherFastCheap.CHEAPEST;
 
 const SwitcherBoxes = {
     ALL: -1,
@@ -32,10 +33,9 @@ const SwitcherBoxes = {
     TWO_STOPS: 2,
     THREE_STOPS: 3,
 }
-
-let switcherFastCheap = SwitcherFastCheap.CHEAPEST;
 let switcherBoxes = SwitcherBoxes.ALL;
-let sortedStopsTickets = {}
+
+
 
 
 function addEventListenerToCheckboxes(checkboxes) {
@@ -65,24 +65,53 @@ function addEventListenerToFastest(fastestBtn) {
     fastestBtn.onclick = (e) => {
         switcherFastCheap = SwitcherFastCheap.FASTEST;
 
-        const fastestTickets = fastest(sortedStopsTickets)
-        
-        // const ticketsSorted = sortStops(fastestTickets);
+        fastestTickets = fastest(sortedStopsTickets)
         console.log(fastestTickets);
     }
 }
-function addEventListenerToCheapest(cheapestBtn, checkboxes){
+function addEventListenerToCheapest(cheapestBtn){
     cheapestBtn.onclick = (e) => {
         switcherFastCheap = SwitcherFastCheap.CHEAPEST
-        // let sortedTickets = addEventListenerToCheckboxes(checkboxes);
-        const cheapestTickets = cheapest(sortedStopsTickets);
+        cheapestTickets = cheapest(sortedStopsTickets );////как передать значение по умолчанию sortedStopsTickets = tickets
 
-        // const ticketsSorted = sortStops();
         console.log(cheapestTickets);
     }
 }
 
-addEventListenerToCheckboxes(checkboxes)
 
+ let sortedStopsTickets = {};
+ let cheapestTickets = {};
+ let fastestTickets = {};
+
+addEventListenerToCheckboxes(checkboxes)
 addEventListenerToFastest(fastestBtn);
 addEventListenerToCheapest(cheapestBtn)
+
+
+class TicketCard  {
+    constructor(cheapestTickets) {
+      this._ticket = cheapestTickets;
+    }
+
+    render() {
+        const element = document.createElement('div')
+    
+
+   
+        element.innerHTML = 
+       `<div class="ticket tickets__item">
+            <div class="ticket__wrapper">
+              <p class="ticket__price">${ticketPrice} Р</p>
+              <img
+                class="ticket__avia-logo"
+                src="https://pics.avs.io/99/36/${this._ticket.carrier}.png"
+                alt="${this._ticket.carrier}"
+              />
+            </div>
+            ${this._renderSegment()}
+          </div>`;
+    }     
+  }
+
+  let card = new Ticket(cheapestTickets)
+  console.log(card);
