@@ -34,7 +34,9 @@ const SwitcherBoxes = {
 }
 
 let switcherFastCheap = SwitcherFastCheap.CHEAPEST;
-let switcherBoxes = SwitcherBoxes.ALL
+let switcherBoxes = SwitcherBoxes.ALL;
+let sortedStopsTickets = {}
+
 
 function addEventListenerToCheckboxes(checkboxes) {
     checkboxes.forEach(e =>{
@@ -52,31 +54,35 @@ function addEventListenerToCheckboxes(checkboxes) {
             } else               {switcherBoxes = SwitcherBoxes.ALL}
 
 
-        let sortStopsTickets = sortStops(tickets, Number(sortNumber))
-        console.log(sortStopsTickets);
+        sortedStopsTickets = sortStops(tickets, Number(sortNumber))
+        console.log(sortedStopsTickets);
         }
     })
 }
 
-function addEventListenerToFastes(fastestBtn) { 
+
+function addEventListenerToFastest(fastestBtn) { 
     fastestBtn.onclick = (e) => {
         switcherFastCheap = SwitcherFastCheap.FASTEST;
-        const fastestTickets = fastest(tickets)
+
+        const fastestTickets = fastest(sortedStopsTickets)
         
-        const ticketsSorted = sortStops(fastestTickets);
+        // const ticketsSorted = sortStops(fastestTickets);
         console.log(fastestTickets);
     }
 }
-function addEventListenerToCheapest(cheapestBtn){
+function addEventListenerToCheapest(cheapestBtn, checkboxes){
     cheapestBtn.onclick = (e) => {
         switcherFastCheap = SwitcherFastCheap.CHEAPEST
-        const cheapestTickets = cheapest(tickets);
+        // let sortedTickets = addEventListenerToCheckboxes(checkboxes);
+        const cheapestTickets = cheapest(sortedStopsTickets);
 
-        const ticketsSorted = sortStops(cheapestTickets);
+        // const ticketsSorted = sortStops();
         console.log(cheapestTickets);
     }
 }
 
-addEventListenerToCheckboxes(checkboxes);
-addEventListenerToFastes(fastestBtn);
+addEventListenerToCheckboxes(checkboxes)
+
+addEventListenerToFastest(fastestBtn);
 addEventListenerToCheapest(cheapestBtn)
