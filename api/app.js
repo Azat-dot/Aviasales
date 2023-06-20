@@ -36,30 +36,39 @@ const SwitcherBoxes = {
 let switcherFastCheap = SwitcherFastCheap.CHEAPEST;
 let switcherBoxes = SwitcherBoxes.ALL
 
-// function addEventListenerToCheckboxes(checkboxes) {
-//     checkboxes.forEach(e =>{
-//         e.onclick = function(event){
-//             switcherBoxes = SwitcherBoxes.ALL;
-//             switcherBoxes = SwitcherBoxes.WITHOUT_STOPS;
-//             switcherBoxes = SwitcherBoxes.ONE_STOPS;
-//             switcherBoxes = SwitcherBoxes.TWO_STOPS;
-//             switcherBoxes = SwitcherBoxes.THREE_STOPS;
-//         const ticketsSorted =
+function addEventListenerToCheckboxes(checkboxes) {
+    checkboxes.forEach(e =>{
+        e.onclick = function(event){
+            onlyOne(event);
+        let sortNumber = getSortNumber(event);
 
-//             onlyOne(event);
-//         let sortNumber = getSortNumber(event);
-//         let sortStopsTickets = sortStops(tickets, Number(sortNumber))
-//         console.log(sortStopsTickets);
-//         }
-//     })
-// }
+            if( sortNumber == 0){
+                    switcherBoxes = SwitcherBoxes.WITHOUT_STOPS
+            } else if (
+                sortNumber == 1){
+                    switcherBoxes = SwitcherBoxes.ONE_STOPS
+            } else if (
+                sortNumber == 2){
+                    switcherBoxes = SwitcherBoxes.TWO_STOPS
+            } else if (
+                sortNumber == 3){
+                    switcherBoxes = SwitcherBoxes.THREE_STOPS
+                } else {
+                    switcherBoxes = SwitcherBoxes.ALL
+                }
+console.log(switcherBoxes);
+        let sortStopsTickets = sortStops(tickets, Number(sortNumber))
+        console.log(sortStopsTickets);
+        }
+    })
+}
 
 function addEventListenerToFastes(fastestBtn) { 
     fastestBtn.onclick = (e) => {
         switcherFastCheap = SwitcherFastCheap.FASTEST;
         const fastestTickets = fastest(tickets)
         
-        // const ticketsSorted = sortStops(fastestTickets);
+        const ticketsSorted = sortStops(fastestTickets);
         console.log(fastestTickets);
     }
 }
@@ -68,7 +77,7 @@ function addEventListenerToCheapest(cheapestBtn){
         switcherFastCheap = SwitcherFastCheap.CHEAPEST
         const cheapestTickets = cheapest(tickets);
 
-        // const ticketsSorted = sortStops(cheapestTickets);
+        const ticketsSorted = sortStops(cheapestTickets);
         console.log(cheapestTickets);
     }
 }
