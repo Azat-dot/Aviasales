@@ -42,21 +42,16 @@ function addEventListenerToCheckboxes(checkboxes) {
             onlyOne(event);
         let sortNumber = getSortNumber(event);
 
-            if( sortNumber == 0){
-                    switcherBoxes = SwitcherBoxes.WITHOUT_STOPS
+            if( sortNumber == 0) {switcherBoxes = SwitcherBoxes.WITHOUT_STOPS
             } else if (
-                sortNumber == 1){
-                    switcherBoxes = SwitcherBoxes.ONE_STOPS
+                sortNumber == 1) {switcherBoxes = SwitcherBoxes.ONE_STOPS
             } else if (
-                sortNumber == 2){
-                    switcherBoxes = SwitcherBoxes.TWO_STOPS
+                sortNumber == 2) {switcherBoxes = SwitcherBoxes.TWO_STOPS
             } else if (
-                sortNumber == 3){
-                    switcherBoxes = SwitcherBoxes.THREE_STOPS
-                } else {
-                    switcherBoxes = SwitcherBoxes.ALL
-                }
-console.log(switcherBoxes);
+                sortNumber == 3) {switcherBoxes = SwitcherBoxes.THREE_STOPS
+            } else               {switcherBoxes = SwitcherBoxes.ALL}
+
+
         let sortStopsTickets = sortStops(tickets, Number(sortNumber))
         console.log(sortStopsTickets);
         }
