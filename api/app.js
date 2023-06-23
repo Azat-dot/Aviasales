@@ -6,14 +6,14 @@ const fastestBtn = document.querySelector("#quick-btn");
 const cheapestBtn = document.querySelector("#cheap-btn");
 const checkboxes = document.querySelectorAll(".input");
 
-// function setDefaultStops(checkboxes) {
-//    let defaultCheckbox = checkboxes.filter(item => {
-//        return getSortNumber(item) == -1
-//     })
+function setDefaultStops(checkboxes) {
+   let defaultCheckbox = checkboxes.filter(item => {
+    return getSortNumber(item) == -1
+    })
 
-//     defaultCheckbox.checked = true
-// }
-// setDefaultStops(checkboxes)
+    defaultCheckbox.checked = true
+}
+setDefaultStops(checkboxes)
 
 function getSortNumber(checkbox) {
     let sort = checkbox.target.dataset.sortType
@@ -80,9 +80,7 @@ function addEventListenerToCheckboxes(checkboxes) {
 function addEventListenerToFastest(fastestBtn) { 
     fastestBtn.onclick = (e) => {
         switcherFastCheap = SwitcherFastCheap.FASTEST;
-
         fastestTickets = fastest(sortedStopsTickets)
-
 
         console.log(fastestTickets);
     }
