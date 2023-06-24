@@ -8,19 +8,14 @@ const checkboxes = document.querySelectorAll(".input");
 
 function setDefaultStops(checkboxes) {
    let defaultCheckbox = Array.from(checkboxes).find(item => {
-    let sort = item.dataset.sortType
+    let sort = getSortNumber(item)
+
     return sort == -1
     })
 
     defaultCheckbox.checked = true
 }
 setDefaultStops(checkboxes)
-
-
-function getSortNumber(checkbox) {
-    let sort;
-    return sort
-}
 
 function onlyOne(e) {
     let checkboxes = document.getElementsByName('check')
@@ -30,7 +25,9 @@ function onlyOne(e) {
     })
 }
 
-
+function getSortNumber(checkbox) {
+ return checkbox.dataset.sortType
+}
 const SwitcherFastCheap = {
     CHEAPEST: 0,
     FASTEST: 1,
@@ -54,7 +51,7 @@ function addEventListenerToCheckboxes(checkboxes) {
     checkboxes.forEach(e =>{
         e.onclick = function(event){
             onlyOne(event);
-        let sortNumber = event.target.dataset.sortType
+        let sortNumber = getSortNumber(event.target)
 
             if( sortNumber == 0) {switcherBoxes = SwitcherBoxes.WITHOUT_STOPS
             } else if (
