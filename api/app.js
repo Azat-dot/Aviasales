@@ -7,7 +7,7 @@ const cheapestBtn = document.querySelector("#cheap-btn");
 const checkboxes = document.querySelectorAll(".input");
 
 function setDefaultStops(checkboxes) {
-   let defaultCheckbox = checkboxes.filter(item => {
+   let defaultCheckbox = Array.from(checkboxes).find(item => {
     return getSortNumber(item) == -1
     })
 
@@ -101,6 +101,11 @@ addEventListenerToCheckboxes(checkboxes)
 addEventListenerToFastest(fastestBtn);
 addEventListenerToCheapest(cheapestBtn)
 
+// document.getElementById('#ticket').innerHTML = JSON.stringify(cheapestTickets.price)
+document.getElementById("ticket").innerHTML = `<h1>${cheapestTickets.price}</h1>`
+
+console.log(cheapestTickets);
+
 
 // class TicketCard  {
 //     constructor(cheapestTickets) {
@@ -129,4 +134,4 @@ addEventListenerToCheapest(cheapestBtn)
 //     }     
 //   }
 
- 
+ document.querySelector('.ticket').innerHTML = JSON.stringify(cheapestTickets.price)
