@@ -1,4 +1,5 @@
 import { cheapest, fastest, sortStops, getTickets } from "./api.js";
+import { TICKETS_NUMBERS } from "./constant.js";
 
 
 const tickets = await getTickets();
@@ -6,16 +7,14 @@ const fastestBtn = document.querySelector("#quick-btn");
 const cheapestBtn = document.querySelector("#cheap-btn");
 const checkboxes = document.querySelectorAll(".input");
 
-function setDefaultStops(checkboxes) {
+function setDefaultStop(checkboxes) {
    let defaultCheckbox = Array.from(checkboxes).find(item => {
     let sort = getSortNumber(item)
-
     return sort == -1
     })
-
     defaultCheckbox.checked = true
 }
-setDefaultStops(checkboxes)
+setDefaultStop(checkboxes)
 
 function onlyOne(e) {
     let checkboxes = document.getElementsByName('check')
@@ -25,9 +24,12 @@ function onlyOne(e) {
     })
 }
 
+
+
 function getSortNumber(checkbox) {
  return checkbox.dataset.sortType
 }
+
 const SwitcherFastCheap = {
     CHEAPEST: 0,
     FASTEST: 1,
@@ -47,6 +49,15 @@ let sortedStopsTickets = {}
 let cheapestTickets = {};
 let fastestTickets = {};
 
+function setDefaultTickets(tickets){
+    sortedStopsTickets = sortStops(tickets,(-1))
+    cheapestTickets = cheapest(sortedStopsTickets)
+
+    console.log(cheapestTickets);
+}
+
+setDefaultTickets(tickets)
+
 function addEventListenerToCheckboxes(checkboxes) {
     checkboxes.forEach(e =>{
         e.onclick = function(event){
@@ -61,7 +72,6 @@ function addEventListenerToCheckboxes(checkboxes) {
             } else if (
                 sortNumber == 3) {switcherBoxes = SwitcherBoxes.THREE_STOPS
             } else               {switcherBoxes = SwitcherBoxes.ALL}
-
 
         sortedStopsTickets = sortStops(tickets, Number(sortNumber))
         if (switcherFastCheap == SwitcherFastCheap.FASTEST) {
@@ -89,6 +99,15 @@ function addEventListenerToCheapest(cheapestBtn){
         switcherFastCheap = SwitcherFastCheap.CHEAPEST
         cheapestTickets = cheapest(sortedStopsTickets);
 
+
+window.addEventListener("load", async function () {
+    const element = document.getElementById("ticket")
+    const node = document.createTextNode(cheapestTickets[0].price)
+    element.appendChild(node)
+    
+    console.log(document.getElementById("ticket"));
+    
+})
         console.log(cheapestTickets);
     }
 }
@@ -101,9 +120,11 @@ addEventListenerToFastest(fastestBtn);
 addEventListenerToCheapest(cheapestBtn)
 
 // document.getElementById('#ticket').innerHTML = JSON.stringify(cheapestTickets.price)
-document.getElementById("ticket").innerHTML = `<h1>${cheapestTickets.price}</h1>`
+const element = document.getElementById("ticket")
+const node = document.createTextNode("hello world")
+element.appendChild(node)
 
-console.log(cheapestTickets);
+console.log(document.getElementById("ticket"));
 
 
 // class TicketCard  {
@@ -133,4 +154,11 @@ console.log(cheapestTickets);
 //     }     
 //   }
 
- document.querySelector('.ticket').innerHTML = JSON.stringify(cheapestTickets.price)
+window.addEventListener("load", async function () {
+    const element = document.getElementById("ticket")
+    const node = document.createTextNode(cheapestTickets[0].price)
+    element.appendChild(node)
+    
+    console.log(document.getElementById("ticket"));
+    
+})
