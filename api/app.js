@@ -49,14 +49,21 @@ let sortedStopsTickets = {}
 let cheapestTickets = {};
 let fastestTickets = {};
 
-function setDefaultTickets(tickets){
-    sortedStopsTickets = sortStops(tickets,(-1))
-    cheapestTickets = cheapest(sortedStopsTickets)
+
+function setDefaultTickets(tickets, switcherBoxes){
+    sortedStopsTickets = sortStops(tickets, switcherBoxes )
+
+    if (switcherFastCheap == SwitcherFastCheap.FASTEST) {
+        fastestTickets = fastest(sortedStopsTickets)
+    } else {
+        cheapestTickets = cheapest(sortedStopsTickets)
+    }
 
     console.log(cheapestTickets);
+    console.log(fastestTickets);
 }
 
-setDefaultTickets(tickets)
+setDefaultTickets(tickets, switcherBoxes)
 
 function addEventListenerToCheckboxes(checkboxes) {
     checkboxes.forEach(e =>{
@@ -113,7 +120,6 @@ window.addEventListener("load", async function () {
 }
 
 
- 
 
 addEventListenerToCheckboxes(checkboxes)
 addEventListenerToFastest(fastestBtn);
@@ -121,11 +127,17 @@ addEventListenerToCheapest(cheapestBtn)
 
 // document.getElementById('#ticket').innerHTML = JSON.stringify(cheapestTickets.price)
 const element = document.getElementById("ticket")
-const node = document.createTextNode("hello world")
+const node = document.createTextNode(cheapestTickets[0].price)
 element.appendChild(node)
 
-console.log(document.getElementById("ticket"));
-
+window.addEventListener("load", async function () {
+    const element = document.getElementById("ticket")
+    const node = document.createTextNode(cheapestTickets[0].price)
+    element.appendChild(node)
+    
+    console.log(document.getElementById("ticket"));
+    
+})
 
 // class TicketCard  {
 //     constructor(cheapestTickets) {
@@ -153,12 +165,3 @@ console.log(document.getElementById("ticket"));
 
 //     }     
 //   }
-
-window.addEventListener("load", async function () {
-    const element = document.getElementById("ticket")
-    const node = document.createTextNode(cheapestTickets[0].price)
-    element.appendChild(node)
-    
-    console.log(document.getElementById("ticket"));
-    
-})
