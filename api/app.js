@@ -1,5 +1,4 @@
 import { cheapest, fastest, sortStops, getTickets } from "./api.js";
-import { TICKETS_NUMBERS } from "./constant.js";
 
 
 const tickets = await getTickets();
@@ -13,6 +12,7 @@ function setDefaultStop(checkboxes) {
     return sort == -1
     })
     defaultCheckbox.checked = true
+    
 }
 setDefaultStop(checkboxes)
 
@@ -63,6 +63,8 @@ function setDefaultTickets(tickets, switcherBoxes){
 
     switcherFunction(sortedStopsTickets)
 
+    document.getElementById('ticket').innerHTML = JSON.stringify(sortedStopsTickets)
+
     console.log(sortedStopsTickets);
 }
 
@@ -84,9 +86,11 @@ function addEventListenerToCheckboxes(checkboxes) {
             } else               {switcherBoxes = SwitcherBoxes.ALL}
 
         sortedStopsTickets = sortStops(tickets, Number(sortNumber))
-        
+
         switcherFunction(sortedStopsTickets)
         
+        document.getElementById('ticket').innerHTML = JSON.stringify(sortedStopsTickets)
+
         console.log(sortedStopsTickets);
         }
     })
@@ -98,6 +102,8 @@ function addEventListenerToFastest(fastestBtn) {
         switcherFastCheap = SwitcherFastCheap.FASTEST;
         fastestTickets = fastest(sortedStopsTickets)
 
+        document.getElementById('ticket').innerHTML = JSON.stringify(fastestTickets)
+
         console.log(fastestTickets);
     }
 }
@@ -106,16 +112,10 @@ function addEventListenerToCheapest(cheapestBtn){
         switcherFastCheap = SwitcherFastCheap.CHEAPEST
         cheapestTickets = cheapest(sortedStopsTickets);
 
+        document.getElementById('ticket').innerHTML = JSON.stringify(cheapestTickets)
 
-window.addEventListener("load", async function () {
-    const element = document.getElementById("ticket")
-    const node = document.createTextNode(cheapestTickets[0].price)
-    element.appendChild(node)
-    
-    console.log(document.getElementById("ticket"));
-    
-})
         console.log(cheapestTickets);
+        
     }
 }
 
@@ -125,19 +125,25 @@ addEventListenerToCheckboxes(checkboxes)
 addEventListenerToFastest(fastestBtn);
 addEventListenerToCheapest(cheapestBtn)
 
-// document.getElementById('#ticket').innerHTML = JSON.stringify(cheapestTickets.price)
-const element = document.getElementById("ticket")
-const node = document.createTextNode(cheapestTickets[0].price)
-element.appendChild(node)
 
-window.addEventListener("load", async function () {
-    const element = document.getElementById("ticket")
-    const node = document.createTextNode(cheapestTickets[0].price)
-    element.appendChild(node)
-    
-    console.log(document.getElementById("ticket"));
-    
-})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // class TicketCard  {
 //     constructor(cheapestTickets) {
