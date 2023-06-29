@@ -63,6 +63,7 @@ function switcherFunction() {
 }
 
 function setDefaultTickets(tickets, switcherBoxes){
+
     sortedStopsTickets = sortStops(tickets, switcherBoxes )
 
     switcherFunction(sortedStopsTickets)
@@ -75,7 +76,6 @@ function setDefaultTickets(tickets, switcherBoxes){
         document.getElementById('ticket').append(element)
     })
 
-    console.log(sortedStopsTickets);
 }
 
 
@@ -94,10 +94,12 @@ function addEventListenerToCheckboxes(checkboxes) {
                 sortNumber == 3) {switcherBoxes = SwitcherBoxes.THREE_STOPS
             } else               {switcherBoxes = SwitcherBoxes.ALL}
 
+          
+
         sortedStopsTickets = sortStops(tickets, Number(sortNumber))
 
         switcherFunction(sortedStopsTickets)
-        
+
 
         document.getElementById('ticket').innerHTML = ""
         sortedStopsTickets.forEach(ticket => {
@@ -107,7 +109,6 @@ function addEventListenerToCheckboxes(checkboxes) {
             document.getElementById('ticket').append(element)
         })
 
-        console.log(sortedStopsTickets);
         }
     })
 }
@@ -118,13 +119,13 @@ function addEventListenerToFastest(fastestBtn) {
         switcherFastCheap = SwitcherFastCheap.FASTEST;
         fastestTickets = fastest(sortedStopsTickets)
 
-        // document.getElementById('ticket').innerHTML = ""
-        // fastestTickets.forEach(ticket => {
-        //     const element = document.createElement('div')
-        //     element.innerHTML = renderCard(ticket)
+        document.getElementById('ticket').innerHTML = ""
+        fastestTickets.forEach(ticket => {
+            const element = document.createElement('div')
+            element.innerHTML = renderCard(ticket)
 
-        //     document.getElementById('ticket').append(element)
-        // })
+            document.getElementById('ticket').append(element)
+        })
 
         console.log(fastestTickets);
     }
@@ -164,17 +165,43 @@ window.addEventListener("load", async  function() {
 
 
 
-
 function renderCard (ticket) {
+    
+
+
     return  `<div class="ticket tickets__item">
              <div class="ticket__wrapper">
-        <p class="ticket__price">${ticket.price} Р</p>
+        <p class="ticket__price"> ${ticket.price} Р</p>
         <img
         class="ticket__avia-logo"
         src="https://pics.avs.io/99/36/${ticket.carrier}.png"
         alt="${ticket.carrier}"
         />
         </div>
+
+            <div class="ticket__col>
+                    <p class="ticket__row ticket__label"> ${ticket.segments[0].origin} - ${ticket.segments[0].destination}</p>
+                    <p class="ticket__col ticket__value"> ${ticket.segments[0].date} - ${ticket.segments[0].duration}</p>
+
+                    <p class="ticket__row ticket__label">  В ПУТИ</p>
+                    <p class="ticket__col ticket__value">${ticket.segments[0].duration} </p>
+
+                    <p class="ticket__row ticket__label"> ${switcherBoxes} ПЕРЕСАДКИ </p>
+                    <p class="ticket__col ticket__value"> ${ticket.segments[0].stops} </p>
+            </div>
+
+            <div class="ticket__col>
+                    <p class="ticket__row ticket__label"> ${ticket.segments[1].origin} - ${ticket.segments[1].destination}</p>
+                    <p class="ticket__col ticket__value"> ${ticket.segments[1].date} - ${ticket.segments[1].duration}</p>
+
+                    <p class="ticket__row ticket__label">  В ПУТИ</p>
+                    <p class="ticket__col ticket__value">${ticket.segments[1].duration} </p>
+
+                    <p class="ticket__row ticket__label"> ${switcherBoxes} ПЕРЕСАДКИ </p>
+                    <p class="ticket__col ticket__value"> ${ticket.segments[1].stops} </p>
+            </div>
+
+
         </div>`;
 }
 
@@ -187,34 +214,3 @@ function renderCard (ticket) {
 
 
 
-
-
-
-// class TicketCard  {
-//     constructor(cheapestTickets) {
-//       this._ticket = cheapestTickets;
-//       this.parent = document.querySelector(parentSelector)
-//       this.ticketPrice = price
-//     }
-
-//     render() {
-//         const element = document.createElement('div')
-    
-//         element.innerHTML = 
-//        `<div class="ticket tickets__item">
-//             <div class="ticket__wrapper">
-//               <p class="ticket__price">${ticketPrice} Р</p>
-//               <img
-//                 class="ticket__avia-logo"
-//                 src="https://pics.avs.io/99/36/${this._ticket.carrier}.png"
-//                 alt="${this._ticket.carrier}"
-//               />
-//             </div>
-//             ${this._renderSegment()}
-//           </div>`;
-//             this.parent.append(element);
-
-//     }     
-//   }
-
-//   const ticket = new TicketCard(cheapestTickets)
