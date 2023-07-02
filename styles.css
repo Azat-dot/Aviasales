@@ -1,5 +1,6 @@
 * {
     font-family: sans-serif;
+    box-sizing: border-box;
 }
 
 body {
@@ -106,7 +107,6 @@ form {
     flex-direction: row;
     flex-wrap: wrap;
     width: 100%;
-    
 }
 
 .btn {
@@ -146,17 +146,17 @@ form {
 
 
 
-/* .ticket {
+.ticket {
     display: flex;
     background: rgb(255, 255, 255);
     margin-top: 20px;
-}  */
+    width: 100%;
+
+} 
 
 
 .tickets {
     width: 100%;
-  
-
   }
   
   .tickets__sort {

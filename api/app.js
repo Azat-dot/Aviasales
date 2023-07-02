@@ -130,6 +130,7 @@ function addEventListenerToFastest(fastestBtn) {
         console.log(fastestTickets);
     }
 }
+
 function addEventListenerToCheapest(cheapestBtn){
     cheapestBtn.onclick = (e) => {
         switcherFastCheap = SwitcherFastCheap.CHEAPEST
@@ -141,10 +142,8 @@ function addEventListenerToCheapest(cheapestBtn){
             const element = document.createElement('div')
             element.innerHTML = renderCard(ticket)
 
-
             document.getElementById('ticket').append(element)
         })
-
 
         console.log(cheapestTickets);
         
@@ -162,12 +161,29 @@ window.addEventListener("load", async  function() {
 
 })
 
+// function toggleCheapFastBtn(btn) {
+//     const toggle = document.querySelector('btn'); 
 
+//     toggle.classList.add('btn_active');
+
+    // return `<button  class="btn btn-active>`
+// }
 
 
 function renderCard (ticket) {
+
+   let durationInHourTo = Math.floor(ticket.segments[0].duration / 60)
+   let durationInHourReturn = Math.floor(ticket.segments[1].duration / 60)
     
 
+
+   let dateDepartureTo = new Date(ticket.segments[0].date)
+   let timeTo = `${dateDepartureTo.getHours()}:${dateDepartureTo.getMinutes()}`
+   
+   let dateDepartureReturn = new Date(ticket.segments[1].date)
+   let timeReturn = `${dateDepartureReturn.getHours()}:${dateDepartureReturn.getMinutes()}`
+
+   
 
     return  `<div class="ticket tickets__item">
              <div class="ticket__wrapper">
@@ -181,22 +197,27 @@ function renderCard (ticket) {
 
             <div class="ticket__col>
                     <p class="ticket__row ticket__label"> ${ticket.segments[0].origin} - ${ticket.segments[0].destination}</p>
-                    <p class="ticket__col ticket__value"> ${ticket.segments[0].date} - ${ticket.segments[0].duration}</p>
-
+                    <p class="ticket__col ticket__value"> ${timeTo} - ${timeTo} + ${durationInHourTo}</p>
+                    
                     <p class="ticket__row ticket__label">  В ПУТИ</p>
-                    <p class="ticket__col ticket__value">${ticket.segments[0].duration} </p>
+                    <p class="ticket__col ticket__value">${durationInHourTo} </p>
 
                     <p class="ticket__row ticket__label"> ${switcherBoxes} ПЕРЕСАДКИ </p>
                     <p class="ticket__col ticket__value"> ${ticket.segments[0].stops} </p>
             </div>
+            
+            <div class="ticket__col>
+                   
+                    
+                         </div>
 
             <div class="ticket__col>
                     <p class="ticket__row ticket__label"> ${ticket.segments[1].origin} - ${ticket.segments[1].destination}</p>
-                    <p class="ticket__col ticket__value"> ${ticket.segments[1].date} - ${ticket.segments[1].duration}</p>
-
+                    <p class="ticket__col ticket__value"> ${timeReturn} - ${timeReturn}  + ${durationInHourReturn}</p>
+                    
                     <p class="ticket__row ticket__label">  В ПУТИ</p>
-                    <p class="ticket__col ticket__value">${ticket.segments[1].duration} </p>
-
+                    <p class="ticket__col ticket__value">${durationInHourReturn} </p>
+       
                     <p class="ticket__row ticket__label"> ${switcherBoxes} ПЕРЕСАДКИ </p>
                     <p class="ticket__col ticket__value"> ${ticket.segments[1].stops} </p>
             </div>
