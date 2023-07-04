@@ -101,13 +101,7 @@ function addEventListenerToCheckboxes(checkboxes) {
         switcherFunction(sortedStopsTickets)
 
 
-        document.getElementById('ticket').innerHTML = ""
-        sortedStopsTickets.forEach(ticket => {
-            const element = document.createElement('div')
-            element.innerHTML = renderCard(ticket)
-
-            document.getElementById('ticket').append(element)
-        })
+        renderTicket(sortedStopsTickets)
 
         }
     })
@@ -119,13 +113,7 @@ function addEventListenerToFastest(fastestBtn) {
         switcherFastCheap = SwitcherFastCheap.FASTEST;
         fastestTickets = fastest(sortedStopsTickets)
 
-        document.getElementById('ticket').innerHTML = ""
-        fastestTickets.forEach(ticket => {
-            const element = document.createElement('div')
-            element.innerHTML = renderCard(ticket)
-
-            document.getElementById('ticket').append(element)
-        })
+        renderTicket(fastestTickets)
 
         console.log(fastestTickets);
     }
@@ -137,19 +125,22 @@ function addEventListenerToCheapest(cheapestBtn){
         cheapestTickets = cheapest(sortedStopsTickets);
 
         
-        document.getElementById('ticket').innerHTML = ""
-        cheapestTickets.forEach(ticket => {
-            const element = document.createElement('div')
-            element.innerHTML = renderCard(ticket)
-
-            document.getElementById('ticket').append(element)
-        })
+        renderTicket(cheapestTickets)
 
         console.log(cheapestTickets);
         
     }
 }
 
+function renderTicket(tickets) {
+    document.getElementById('ticket').innerHTML = ""
+    tickets.forEach(ticket => {
+        const element = document.createElement('div')
+        element.innerHTML = renderCard(ticket)
+
+        document.getElementById('ticket').append(element)
+    })
+}
 
 window.addEventListener("load", async  function() { 
 
@@ -160,6 +151,7 @@ window.addEventListener("load", async  function() {
     addEventListenerToCheapest(cheapestBtn)
 
 })
+
 
 // function toggleCheapFastBtn(btn) {
 //     const toggle = document.querySelector('btn'); 
@@ -206,10 +198,6 @@ function renderCard (ticket) {
                     <p class="ticket__col ticket__value"> ${ticket.segments[0].stops} </p>
             </div>
             
-            <div class="ticket__col>
-                   
-                    
-                         </div>
 
             <div class="ticket__col>
                     <p class="ticket__row ticket__label"> ${ticket.segments[1].origin} - ${ticket.segments[1].destination}</p>
