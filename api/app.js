@@ -113,10 +113,11 @@ function addEventListenerToFastest(fastestBtn) {
         switcherFastCheap = SwitcherFastCheap.FASTEST;
         fastestTickets = fastest(sortedStopsTickets)
 
-        renderTicket(fastestTickets)
+        setActive(e)
 
-        console.log(fastestTickets);
+        renderTicket(fastestTickets)
     }
+
 }
 
 function addEventListenerToCheapest(cheapestBtn){
@@ -124,23 +125,42 @@ function addEventListenerToCheapest(cheapestBtn){
         switcherFastCheap = SwitcherFastCheap.CHEAPEST
         cheapestTickets = cheapest(sortedStopsTickets);
 
-        
-        renderTicket(cheapestTickets)
+        setActive(e)
 
-        console.log(cheapestTickets);
-        
+        renderTicket(cheapestTickets)    
     }
+
 }
+
 
 function renderTicket(tickets) {
     document.getElementById('ticket').innerHTML = ""
     tickets.forEach(ticket => {
         const element = document.createElement('div')
         element.innerHTML = renderCard(ticket)
-
+        
         document.getElementById('ticket').append(element)
     })
 }
+
+
+
+
+function setActive(event) {
+    let target = event.target || event.srcElement
+    let buttons = document.getElementsByName("btn")
+
+  
+    buttons.forEach(button => {
+        if (button === target && !button.classList.contains("btn_active")) {
+                return button.classList.add("btn_active");
+        } 
+        return button.classList.remove("btn_active");
+
+    }) 
+}
+
+
 
 window.addEventListener("load", async  function() { 
 
@@ -160,6 +180,8 @@ window.addEventListener("load", async  function() {
 
     // return `<button  class="btn btn-active>`
 // }
+
+
 
 
 function renderCard (ticket) {
