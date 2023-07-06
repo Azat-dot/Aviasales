@@ -54,22 +54,26 @@ return checkbox.dataset.sortType
 }
 
 
-function switcherFunction() {
+function switcherFunction(sortedStopsTickets) {
     if (switcherFastCheap == SwitcherFastCheap.FASTEST) {
-        sortedStopsTickets = fastest(sortedStopsTickets)
+        return fastest(sortedStopsTickets)
     } else {
-        sortedStopsTickets = cheapest(sortedStopsTickets)
+        return cheapest(sortedStopsTickets)
     }
 }
+
 
 function setDefaultTickets(tickets, switcherBoxes){
 
     sortedStopsTickets = sortStops(tickets, switcherBoxes )
 
-    switcherFunction(sortedStopsTickets)
+    let clonedTickets = JSON.parse(JSON.stringify(sortedStopsTickets ))
+     clonedTickets = switcherFunction(clonedTickets)
+
+    
 
     document.getElementById('ticket').innerHTML = ""
-    sortedStopsTickets.forEach(ticket => {
+    clonedTickets.forEach(ticket => {
         const element = document.createElement('div')
         element.innerHTML = renderCard(ticket)
 
@@ -145,7 +149,6 @@ function renderTicket(tickets) {
 
 
 
-
 function setActive(event) {
     let target = event.target || event.srcElement
     let buttons = document.getElementsByName("btn")
@@ -173,13 +176,6 @@ window.addEventListener("load", async  function() {
 })
 
 
-// function toggleCheapFastBtn(btn) {
-//     const toggle = document.querySelector('btn'); 
-
-//     toggle.classList.add('btn_active');
-
-    // return `<button  class="btn btn-active>`
-// }
 
 
 
@@ -208,29 +204,28 @@ function renderCard (ticket) {
         alt="${ticket.carrier}"
         />
         </div>
+                <div class="ticket__>
+                    <p class="ticket__details_label"> ${ticket.segments[0].origin} - ${ticket.segments[0].destination}</p>
+                    <p class="ticket__details_value"> ${timeTo} - ${timeTo} + ${durationInHourTo}</p>
+                </div>
 
-            <div class="ticket__col>
-                    <p class="ticket__row ticket__label"> ${ticket.segments[0].origin} - ${ticket.segments[0].destination}</p>
-                    <p class="ticket__col ticket__value"> ${timeTo} - ${timeTo} + ${durationInHourTo}</p>
-                    
-                    <p class="ticket__row ticket__label">  В ПУТИ</p>
-                    <p class="ticket__col ticket__value">${durationInHourTo} </p>
+                <div class="ticket__details>
+                    <p class="ticket__details_label">  В ПУТИ</p>
+                    <p class="ticket__details_value">${durationInHourTo} </p>
+                </div>
 
-                    <p class="ticket__row ticket__label"> ${switcherBoxes} ПЕРЕСАДКИ </p>
-                    <p class="ticket__col ticket__value"> ${ticket.segments[0].stops} </p>
-            </div>
+                <div class="ticket__details>
+                    <p class="ticket__details_label"> ${switcherBoxes} ПЕРЕСАДКИ </p>
+                    <p class="ticket__details_value"> ${ticket.segments[0].stops} </p>
+                </div>
+
+        </div>
+
             
 
-            <div class="ticket__col>
-                    <p class="ticket__row ticket__label"> ${ticket.segments[1].origin} - ${ticket.segments[1].destination}</p>
-                    <p class="ticket__col ticket__value"> ${timeReturn} - ${timeReturn}  + ${durationInHourReturn}</p>
-                    
-                    <p class="ticket__row ticket__label">  В ПУТИ</p>
-                    <p class="ticket__col ticket__value">${durationInHourReturn} </p>
-       
-                    <p class="ticket__row ticket__label"> ${switcherBoxes} ПЕРЕСАДКИ </p>
-                    <p class="ticket__col ticket__value"> ${ticket.segments[1].stops} </p>
-            </div>
+            
+
+           
 
 
         </div>`;
@@ -240,7 +235,16 @@ function renderCard (ticket) {
 
 
 
+{/* <div >
 
+<p class="ticket__row ticket__label"> ${ticket.segments[1].origin} - ${ticket.segments[1].destination}</p>
+<p class="ticket__col ticket__value"> ${timeReturn} - ${timeReturn}  + ${durationInHourReturn}</p>   
+
+<p class="ticket__col ticket__value">${durationInHourReturn} </p>
+
+<p class="ticket__row ticket__label"> ${switcherBoxes} ПЕРЕСАДКИ </p>
+<p class="ticket__col ticket__value"> ${ticket.segments[1].stops} </p>
+</div> */}
 
 
 

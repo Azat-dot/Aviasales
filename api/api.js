@@ -9,11 +9,6 @@ async function getTickets() {
     return await response.json()
   }
 
-// getTickets().then(response => console.log(response))
-// getTickets().then(response => console.log(fastest(response, TICKETS_NUMBERS)))
-// getTickets().then(response => console.log(cheapest (response, TICKETS_NUMBERS)))
-// getTickets().then(response => console.log(sortStops(response, STOPS_NUMBERS)))
-
 
 function fastest (response, ticketsNumber = TICKETS_NUMBERS) {
    response.sort((a, b) => {

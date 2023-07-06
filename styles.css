@@ -104,10 +104,23 @@ form {
 
 .results-container {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
     width: 100%;
 }
+
+.cheap-btn {
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;}
+
+.quick-btn {
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+  }
+  
+
 
 .btn {
     background-color: #fff;
@@ -124,7 +137,6 @@ form {
     border-radius: 5px 0px 0px 5px;
     cursor: pointer;
     outline: none;
-    width: 251px;
     cursor: pointer;
 }
 
@@ -165,6 +177,7 @@ form {
   
   .tickets__item {
     margin-bottom: 20px;
+    display: flex;
   }
   .tickets__item:last-child {
     margin-bottom: 0;
@@ -196,26 +209,22 @@ form {
   }
 
   
-  .ticket__row {
+
+  
+  
+  .ticket__details {
     display: flex;
-    flex-direction: column;
+    flex-grow: 30%;
     margin-bottom: 10px;
-    flex-wrap: wrap;
-    width: 50%;
-  }
-  
-  .ticket__row:last-child {
-    margin-bottom: 0;
-  }
+    justify-content: space-between;  
+    background-color: red;
+    justify-content: space-between; 
 
-  .ticket__col {
-    width: 100%;
-    margin-bottom: 10px;
   }
 
 
   
-  .ticket__label {
+  .ticket__details_label {
     color: #a0b0b9;
     text-transform: uppercase;
     font-weight: 600;
@@ -223,9 +232,10 @@ form {
     line-height: 18px;
     letter-spacing: 0.5px;
     margin: 0;
+
   }
   
-  .ticket__value {
+  .ticket__details_value {
     font-weight: 600;
     font-size: 14px;
     line-height: 21px;
