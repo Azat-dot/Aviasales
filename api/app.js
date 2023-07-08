@@ -60,6 +60,7 @@ function switcherFunction(sortedStopsTickets) {
     } else {
         return cheapest(sortedStopsTickets)
     }
+
 }
 
 
@@ -70,17 +71,11 @@ function setDefaultTickets(tickets, switcherBoxes){
     let clonedTickets = JSON.parse(JSON.stringify(sortedStopsTickets ))
      clonedTickets = switcherFunction(clonedTickets)
 
-    
 
-    document.getElementById('ticket').innerHTML = ""
-    clonedTickets.forEach(ticket => {
-        const element = document.createElement('div')
-        element.innerHTML = renderCard(ticket)
-
-        document.getElementById('ticket').append(element)
-    })
+     renderTicket(clonedTickets)
 
 }
+
 
 
 function addEventListenerToCheckboxes(checkboxes) {
@@ -102,10 +97,13 @@ function addEventListenerToCheckboxes(checkboxes) {
 
         sortedStopsTickets = sortStops(tickets, Number(sortNumber))
 
-        switcherFunction(sortedStopsTickets)
+        let clonedTickets = JSON.parse(JSON.stringify(sortedStopsTickets ))
+            clonedTickets = switcherFunction(clonedTickets)
+
+        switcherFunction(clonedTickets)
 
 
-        renderTicket(sortedStopsTickets)
+        renderTicket(clonedTickets)
 
         }
     })
