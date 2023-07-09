@@ -158,49 +158,28 @@ form {
 
 
 
-.ticket {
-    display: flex;
-    background: rgb(255, 255, 255);
-    margin-top: 20px;
-    width: 100%;
-
-} 
-
-
-.tickets {
-    width: 100%;
-  }
-  
-  .tickets__sort {
-    margin-bottom: 20px;
-  }
-  
-  .tickets__item {
-    margin-bottom: 20px;
-    display: flex;
-  }
-  .tickets__item:last-child {
-    margin-bottom: 0;
-  }
 
 .ticket {
-    background-color: white;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
-    display: flex;
-    flex-wrap: wrap;
-    padding: 20px;
-  }
+  display: flex;
+  padding: 20px;
+  margin-top: 20px;
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  width: 100%;
+}
+
   
-  .ticket__wrapper {
+  .ticket__header {
     display: flex;
-    align-items: center;
     justify-content: space-between;
     margin-bottom: 20px;
-    width: 100%;
   }
+
   
   .ticket__price {
+    display: flex;
+    flex-grow: 1;
     color: #2196f3;;
     font-weight: 600;
     font-size: 24px;
@@ -208,23 +187,27 @@ form {
     margin: 0;
   }
 
+  .ticket__logo {
+    display: flex;
+    flex-grow: 2;
+  } 
+
+
   
 
   
   
-  .ticket__details {
+  .ticket__details__wrapper {
     display: flex;
     flex-grow: 30%;
     margin-bottom: 10px;
     justify-content: space-between;  
-    background-color: red;
     justify-content: space-between; 
-
   }
 
 
   
-  .ticket__details_label {
+  .ticket__details__label {
     color: #a0b0b9;
     text-transform: uppercase;
     font-weight: 600;
@@ -235,15 +218,11 @@ form {
 
   }
   
-  .ticket__details_value {
+  .ticket__details__value {
     font-weight: 600;
     font-size: 14px;
     line-height: 21px;
     margin: 0;
   }
 
-  .logo {
-    margin: 0 auto;
-    width: 82px;
-    height: 89px;
-  } 
+  

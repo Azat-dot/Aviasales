@@ -68,11 +68,10 @@ function setDefaultTickets(tickets, switcherBoxes){
 
     sortedStopsTickets = sortStops(tickets, switcherBoxes )
 
-    let clonedTickets = JSON.parse(JSON.stringify(sortedStopsTickets ))
-     clonedTickets = switcherFunction(clonedTickets)
+    let sortedTickets = switcherFunction(sortedStopsTickets)
 
 
-     renderTicket(clonedTickets)
+     renderTicket(sortedTickets)
 
 }
 
@@ -97,13 +96,12 @@ function addEventListenerToCheckboxes(checkboxes) {
 
         sortedStopsTickets = sortStops(tickets, Number(sortNumber))
 
-        let clonedTickets = JSON.parse(JSON.stringify(sortedStopsTickets ))
-            clonedTickets = switcherFunction(clonedTickets)
+        
 
-        switcherFunction(clonedTickets)
+        let sortedTickets = switcherFunction(sortedStopsTickets)
 
 
-        renderTicket(clonedTickets)
+        renderTicket(sortedTickets)
 
         }
     })
@@ -193,38 +191,36 @@ function renderCard (ticket) {
 
    
 
-    return  `<div class="ticket tickets__item">
-             <div class="ticket__wrapper">
-        <p class="ticket__price"> ${ticket.price} Р</p>
-        <img
-        class="ticket__avia-logo"
-        src="https://pics.avs.io/99/36/${ticket.carrier}.png"
-        alt="${ticket.carrier}"
-        />
-        </div>
-                <div class="ticket__>
-                    <p class="ticket__details_label"> ${ticket.segments[0].origin} - ${ticket.segments[0].destination}</p>
-                    <p class="ticket__details_value"> ${timeTo} - ${timeTo} + ${durationInHourTo}</p>
+    return  `<div class="ticket">
+
+                <div class="ticket__header">
+                    <div class="ticket__price"> ${ticket.price} Р</div>
+                    <div class="ticket__logo">
+                        <img
+                            src="https://pics.avs.io/99/36/${ticket.carrier}.png"
+                            alt="${ticket.carrier}"
+                        />
+                    </div>
+                    
                 </div>
 
-                <div class="ticket__details>
-                    <p class="ticket__details_label">  В ПУТИ</p>
-                    <p class="ticket__details_value">${durationInHourTo} </p>
+                </div class="ticket__details__wrapper>
+                        <div class="ticket__details>
+                            <p class="ticket__details__label"> ${ticket.segments[0].origin} - ${ticket.segments[0].destination}</p>
+                            <p class="ticket__details__value"> ${timeTo} - ${timeTo} + ${durationInHourTo}</p>
+                        </div>
+
+                        <div class="ticket__details>
+                            <p class="ticket__details__label">  В ПУТИ</p>
+                            <p class="ticket__details__value">${durationInHourTo} </p>
+                        </div>
+
+                        <div class="ticket__details>
+                            <p class="ticket__details__label"> ${switcherBoxes} ПЕРЕСАДКИ </p>
+                            <p class="ticket__details__value"> ${ticket.segments[0].stops} </p>
+                        </div>
+
                 </div>
-
-                <div class="ticket__details>
-                    <p class="ticket__details_label"> ${switcherBoxes} ПЕРЕСАДКИ </p>
-                    <p class="ticket__details_value"> ${ticket.segments[0].stops} </p>
-                </div>
-
-        </div>
-
-            
-
-            
-
-           
-
 
         </div>`;
 }
