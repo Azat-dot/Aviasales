@@ -1,4 +1,5 @@
 import { cheapest, fastest, sortStops, getTickets } from "./api.js";
+import { toHoursAndMinutes, to2Digits, timeOfArrival } from "./utils.js";
 
 
 const tickets = await getTickets();
@@ -172,22 +173,6 @@ window.addEventListener("load", async  function() {
 })
 
 
-function toHoursAndMinutes(allMinutes) {
-    const minutes = allMinutes % 60;
-    const hours = Math.floor(allMinutes / 60)
-    
-    return `${to2Digits(hours)}ч ${to2Digits(minutes)}м`
-}
-
-function to2Digits(time) {
-    return time.toString().padStart(2, '0');
-  }
-
-
-function timeOfArrival(date, minutes){
-    let dateAddedMinutes = new Date(date.getTime() + minutes*60000)
-    return `${to2Digits(dateAddedMinutes.getHours())}:${to2Digits(dateAddedMinutes.getMinutes())}`
-}
 
 
 function renderCard (ticket) {
@@ -197,11 +182,11 @@ function renderCard (ticket) {
     
 
    let dateDepartureTo = new Date(ticket.segments[0].date)
-   let timeDepartureTo = `${to2Digits(dateDepartureTo.getHours())}:${to2Digits(dateDepartureTo.getMinutes())}`
-   
    let dateDepartureReturn = new Date(ticket.segments[1].date)
-   let timeDepartureReturn = `${to2Digits(dateDepartureReturn.getHours())}:${to2Digits(dateDepartureReturn.getMinutes())}`
 
+
+   let timeDepartureTo = `${to2Digits(dateDepartureTo.getHours())}:${to2Digits(dateDepartureTo.getMinutes())}`
+   let timeDepartureReturn = `${to2Digits(dateDepartureReturn.getHours())}:${to2Digits(dateDepartureReturn.getMinutes())}`
 
    let timeArrivalTo = timeOfArrival(dateDepartureTo, ticket.segments[0].duration)
    let timeArrivalReturn = timeOfArrival(dateDepartureReturn, ticket.segments[1].duration )
