@@ -204,23 +204,43 @@ function renderCard (ticket) {
                     
                 </div>
 
-                </div class="ticket__details__wrapper>
-                        <div class="ticket__details>
+                <div class="ticket__details__wrapper">
+                        <div class="ticket__details">
                             <p class="ticket__details__label"> ${ticket.segments[0].origin} - ${ticket.segments[0].destination}</p>
                             <p class="ticket__details__value"> ${timeTo} - ${timeTo} + ${durationInHourTo}</p>
                         </div>
 
-                        <div class="ticket__details>
+                        <div class="ticket__details">
                             <p class="ticket__details__label">  В ПУТИ</p>
                             <p class="ticket__details__value">${durationInHourTo} </p>
                         </div>
 
-                        <div class="ticket__details>
-                            <p class="ticket__details__label"> ${switcherBoxes} ПЕРЕСАДКИ </p>
+                        <div class="ticket__details">
+                            <p class="ticket__details__label"> ${ticket.segments[0].stops.length} ПЕРЕСАДКИ </p>
                             <p class="ticket__details__value"> ${ticket.segments[0].stops} </p>
                         </div>
-
                 </div>
+
+                <div class="ticket__details__wrapper">
+                        <div class="ticket__details">
+                            <p class="ticket__details__label"> ${ticket.segments[1].origin} - ${ticket.segments[1].destination}</p>
+                            <p class="ticket__details__value"> ${timeReturn} - ${timeReturn} + ${durationInHourReturn}</p>
+                        </div>
+
+                        <div class="ticket__details">
+                            <p class="ticket__details__label">  В ПУТИ</p>
+                            <p class="ticket__details__value">${durationInHourReturn} </p>
+                        </div>
+
+                        <div class="ticket__details">
+                            <p class="ticket__details__label"> ${ticket.segments[1].stops.length} ПЕРЕСАДКИ </p>
+                            <p class="ticket__details__value"> ${ticket.segments[1].stops} </p>
+                        </div>
+                </div>
+
+                
+
+        </div>
 
         </div>`;
 }

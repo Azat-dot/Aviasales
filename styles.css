@@ -160,7 +160,7 @@ form {
 
 
 .ticket {
-  display: flex;
+  display: block;
   padding: 20px;
   margin-top: 20px;
   background-color: white;
@@ -173,13 +173,13 @@ form {
   .ticket__header {
     display: flex;
     justify-content: space-between;
+    justify-items: space-between;
     margin-bottom: 20px;
   }
 
   
   .ticket__price {
     display: flex;
-    flex-grow: 1;
     color: #2196f3;;
     font-weight: 600;
     font-size: 24px;
@@ -189,7 +189,7 @@ form {
 
   .ticket__logo {
     display: flex;
-    flex-grow: 2;
+
   } 
 
 
@@ -202,7 +202,6 @@ form {
     flex-grow: 30%;
     margin-bottom: 10px;
     justify-content: space-between;  
-    justify-content: space-between; 
   }
 
 
