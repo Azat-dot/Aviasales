@@ -172,24 +172,39 @@ window.addEventListener("load", async  function() {
 })
 
 
+function toHoursAndMinutes(allMinutes) {
+    const minutes = allMinutes % 60;
+    const hours = Math.floor(allMinutes / 60)
+    
+    return `${to2Digits(hours)}ч ${to2Digits(minutes)}м`
+}
+
+function to2Digits(time) {
+    return time.toString().padStart(2, '0');
+  }
 
 
+function timeOfArrival(date, minutes){
+    let dateAddedMinutes = new Date(date.getTime() + minutes*60000)
+    return `${to2Digits(dateAddedMinutes.getHours())}:${to2Digits(dateAddedMinutes.getMinutes())}`
+}
 
 
 function renderCard (ticket) {
 
-   let durationInHourTo = Math.floor(ticket.segments[0].duration / 60)
-   let durationInHourReturn = Math.floor(ticket.segments[1].duration / 60)
+   let durationInHourTo = toHoursAndMinutes(ticket.segments[0].duration)
+   let durationInHourReturn = toHoursAndMinutes(ticket.segments[1].duration)
     
 
-
    let dateDepartureTo = new Date(ticket.segments[0].date)
-   let timeTo = `${dateDepartureTo.getHours()}:${dateDepartureTo.getMinutes()}`
+   let timeDepartureTo = `${to2Digits(dateDepartureTo.getHours())}:${to2Digits(dateDepartureTo.getMinutes())}`
    
    let dateDepartureReturn = new Date(ticket.segments[1].date)
-   let timeReturn = `${dateDepartureReturn.getHours()}:${dateDepartureReturn.getMinutes()}`
+   let timeDepartureReturn = `${to2Digits(dateDepartureReturn.getHours())}:${to2Digits(dateDepartureReturn.getMinutes())}`
 
-   
+
+   let timeArrivalTo = timeOfArrival(dateDepartureTo, ticket.segments[0].duration)
+   let timeArrivalReturn = timeOfArrival(dateDepartureReturn, ticket.segments[1].duration )
 
     return  `<div class="ticket">
 
@@ -207,7 +222,7 @@ function renderCard (ticket) {
                 <div class="ticket__details__wrapper">
                         <div class="ticket__details">
                             <p class="ticket__details__label"> ${ticket.segments[0].origin} - ${ticket.segments[0].destination}</p>
-                            <p class="ticket__details__value"> ${timeTo} - ${timeTo} + ${durationInHourTo}</p>
+                            <p class="ticket__details__value"> ${timeDepartureTo} - ${timeArrivalTo}</p>
                         </div>
 
                         <div class="ticket__details">
@@ -224,7 +239,7 @@ function renderCard (ticket) {
                 <div class="ticket__details__wrapper">
                         <div class="ticket__details">
                             <p class="ticket__details__label"> ${ticket.segments[1].origin} - ${ticket.segments[1].destination}</p>
-                            <p class="ticket__details__value"> ${timeReturn} - ${timeReturn} + ${durationInHourReturn}</p>
+                            <p class="ticket__details__value"> ${timeDepartureReturn} - ${timeArrivalReturn }</p>
                         </div>
 
                         <div class="ticket__details">
