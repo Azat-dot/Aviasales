@@ -249,17 +249,5 @@ function renderCard (ticket) {
 
 
 
-{/* <div >
-
-<p class="ticket__row ticket__label"> ${ticket.segments[1].origin} - ${ticket.segments[1].destination}</p>
-<p class="ticket__col ticket__value"> ${timeReturn} - ${timeReturn}  + ${durationInHourReturn}</p>   
-
-<p class="ticket__col ticket__value">${durationInHourReturn} </p>
-
-<p class="ticket__row ticket__label"> ${switcherBoxes} ПЕРЕСАДКИ </p>
-<p class="ticket__col ticket__value"> ${ticket.segments[1].stops} </p>
-</div> */}
-
-
 
 
