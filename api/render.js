@@ -1,6 +1,6 @@
 import {toHoursAndMinutes, to2Digits, timeOfArrival} from "./utils.js";
 
-export default function renderTicket(tickets) {
+export default function renderTickets(tickets) {
     document.getElementById('ticket').innerHTML = ""
     tickets.forEach(ticket => {
         const element = document.createElement('div')

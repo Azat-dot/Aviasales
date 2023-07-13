@@ -1,7 +1,7 @@
 import { cheapest, fastest, sortStops} from "./api.js";
 import { SwitcherFastCheap, SwitcherBoxes} from "./constant.js";
 import { setActive, onlyOne, getSortNumber} from "./utils.js";
-import  renderTicket  from "./render.js";
+import  render  from "./render.js";
 
 
 
@@ -29,7 +29,7 @@ function setDefaultTickets(tickets, switcherBoxes){
 
     let sortedTickets = switchFunction(sortedStopsTickets)
 
-     renderTicket(sortedTickets)
+     render(sortedTickets)
 
 }
 
@@ -53,7 +53,7 @@ function addEventListenerToCheckboxes(tickets, checkboxes) {
         sortedStopsTickets = sortStops(tickets, Number(sortNumber))
         let sortedTickets = switchFunction(sortedStopsTickets)
 
-        renderTicket(sortedTickets)
+        render(sortedTickets)
         }
     })
 }
@@ -66,7 +66,7 @@ function addEventListenerToFastest(fastestBtn) {
 
         setActive(e)
 
-        renderTicket(fastestTickets)
+        render(fastestTickets)
     }
 
 }
@@ -78,7 +78,7 @@ function addEventListenerToCheapest(cheapestBtn){
 
         setActive(e)
 
-        renderTicket(cheapestTickets)    
+        render(cheapestTickets)    
     }
 
 }
