@@ -13,7 +13,7 @@ let cheapestTickets = {};
 let fastestTickets = {};
 
 
-function switcherFunction(sortedStopsTickets) {
+function switchFunction(sortedStopsTickets) {
     if (switcherFastCheap == SwitcherFastCheap.FASTEST) {
         return fastest(sortedStopsTickets)
     } else {
@@ -26,7 +26,7 @@ function switcherFunction(sortedStopsTickets) {
 function setDefaultTickets(tickets, switcherBoxes){
     sortedStopsTickets = sortStops(tickets, switcherBoxes )
 
-    let sortedTickets = switcherFunction(sortedStopsTickets)
+    let sortedTickets = switchFunction(sortedStopsTickets)
 
      renderTicket(sortedTickets)
 
@@ -50,7 +50,7 @@ function addEventListenerToCheckboxes(tickets, checkboxes) {
             } else               {switcherBoxes = SwitcherBoxes.ALL}
 
         sortedStopsTickets = sortStops(tickets, Number(sortNumber))
-        let sortedTickets = switcherFunction(sortedStopsTickets)
+        let sortedTickets = switchFunction(sortedStopsTickets)
 
         renderTicket(sortedTickets)
         }
