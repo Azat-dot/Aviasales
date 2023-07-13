@@ -1,4 +1,3 @@
-import { getTickets } from "./api.js";
 
 export const URL = "http://localhost:3000/tickets";
 export const TICKETS_NUMBERS = 5
@@ -17,8 +16,6 @@ export const SwitcherBoxes = {
     THREE_STOPS: 3,
     }
 
-export const checkboxes = document.querySelectorAll(".input");
-export const fastestBtn = document.querySelector("#quick-btn");
-export const cheapestBtn = document.querySelector("#cheap-btn");
 
-export const tickets = await getTickets();
+
+

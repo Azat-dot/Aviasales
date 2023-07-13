@@ -2,15 +2,15 @@
     font-family: sans-serif;
     box-sizing: border-box;
 }
+html {
+  min-width: fit-content;
+}
 
 body {
     background-color: rgb(229, 229, 229);
     margin: 0;
 }
 
-
-
-/* .header  */
 
 
 .header {
@@ -29,7 +29,6 @@ body {
 }
   
 
-/* main part */
 .wrapper {
   display: flex;
   align-content: center;
@@ -42,11 +41,6 @@ body {
 }
 
 
-
-
-
-
-/* sidebar */
 
 .options {
     background: rgb(255, 255, 255);
@@ -74,9 +68,7 @@ form {
     flex-direction: column;
 }
 
-.hamburger{
-    display: none;
-}
+
 
 .options label {
     margin-top: 20px;
@@ -111,7 +103,6 @@ form {
     background-image: url("/Checkbox_on.svg");
 }
 
-/* tickets and btn */
 
 .results {
     display: flex;
@@ -257,12 +248,6 @@ form {
     }
   }
 
-  /* @media only screen and (max-width:500px){
-    .logo {
-          display: flex;
-          align-items: center;
-          }
-  } */
 
 
 
