@@ -2,12 +2,8 @@ import { cheapest, fastest, sortStops} from "./api.js";
 import { SwitcherFastCheap, SwitcherBoxes} from "./constant.js";
 import  render  from "./render.js";
 
+let sortedStopsTickets = {};
 
-let switcherBoxes = SwitcherBoxes.ALL;
-
-let sortedStopsTickets = {}
-let cheapestTickets = {};
-let fastestTickets = {};
 
 
 function setDefaultTickets(tickets, switcherBoxes, switcherFastCheap){
@@ -20,7 +16,7 @@ function setDefaultTickets(tickets, switcherBoxes, switcherFastCheap){
 }
 
 
-function addEventListenerToCheckboxes(tickets, checkboxes, switcherFastCheap) {
+function addEventListenerToCheckboxes(tickets, checkboxes, switcherFastCheap, switcherBoxes) {
     checkboxes.forEach(e =>{
         e.onclick = function(event){
             onlyOne(event);
@@ -44,7 +40,7 @@ function addEventListenerToCheckboxes(tickets, checkboxes, switcherFastCheap) {
 }
 
 
-function addEventListenerToFastest(fastestBtn, switcherFastCheap) { 
+function addEventListenerToFastest(fastestBtn, switcherFastCheap, fastestTickets) { 
     fastestBtn.onclick = (e) => {
         switcherFastCheap = SwitcherFastCheap.FASTEST;
         fastestTickets = fastest(sortedStopsTickets)
@@ -56,7 +52,7 @@ function addEventListenerToFastest(fastestBtn, switcherFastCheap) {
 
 }
 
-function addEventListenerToCheapest(cheapestBtn, switcherFastCheap){
+function addEventListenerToCheapest(cheapestBtn, switcherFastCheap, cheapestTickets){
     cheapestBtn.onclick = (e) => {
         switcherFastCheap = SwitcherFastCheap.CHEAPEST
         cheapestTickets = cheapest(sortedStopsTickets);
@@ -70,7 +66,7 @@ function addEventListenerToCheapest(cheapestBtn, switcherFastCheap){
 
 
 
-function switchFunction(sortedStopsTickets, switcherFastCheap) {
+function switchFunction(switcherFastCheap) {
     if (switcherFastCheap == SwitcherFastCheap.FASTEST) {
         return fastest(sortedStopsTickets)
     } else {
@@ -111,4 +107,4 @@ function getSortNumber(checkbox) {
         }
  
 
-export {setDefaultStop,switcherBoxes, addEventListenerToCheapest, addEventListenerToFastest, addEventListenerToCheckboxes, setDefaultTickets}
+export {setDefaultStop, addEventListenerToCheapest, addEventListenerToFastest, addEventListenerToCheckboxes, setDefaultTickets}
