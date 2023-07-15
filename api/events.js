@@ -40,7 +40,7 @@ function addEventListenerToCheckboxes(tickets, checkboxes, switcherFastCheap, sw
 }
 
 
-function addEventListenerToFastest(fastestBtn, switcherFastCheap, fastestTickets, sortedStopsTickets) { 
+function addEventListenerToFastest(fastestBtn, switcherFastCheap, fastestTickets, sortedStopsTickets, fastest) { 
     fastestBtn.onclick = (e) => {
         switcherFastCheap = SwitcherFastCheap.FASTEST;
         fastestTickets = fastest(sortedStopsTickets)
@@ -52,7 +52,7 @@ function addEventListenerToFastest(fastestBtn, switcherFastCheap, fastestTickets
 
 }
 
-function addEventListenerToCheapest(cheapestBtn, switcherFastCheap, cheapestTickets, sortedStopsTickets){
+function addEventListenerToCheapest(cheapestBtn, cheapest, switcherFastCheap,  cheapestTickets,  sortedStopsTickets){
     cheapestBtn.onclick = (e) => {
         switcherFastCheap = SwitcherFastCheap.CHEAPEST
         cheapestTickets = cheapest(sortedStopsTickets);
@@ -66,7 +66,7 @@ function addEventListenerToCheapest(cheapestBtn, switcherFastCheap, cheapestTick
 
 
 
-function switchFunction(switcherFastCheap, sortedStopsTickets) {
+function switchFunction(sortedStopsTickets, switcherFastCheap) {
     if (switcherFastCheap == SwitcherFastCheap.FASTEST) {
         return fastest(sortedStopsTickets)
     } else {
