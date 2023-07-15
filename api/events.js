@@ -2,11 +2,11 @@ import { cheapest, fastest, sortStops} from "./api.js";
 import { SwitcherFastCheap, SwitcherBoxes} from "./constant.js";
 import  render  from "./render.js";
 
-let sortedStopsTickets = {};
 
 
 
-function setDefaultTickets(tickets, switcherBoxes, switcherFastCheap){
+function setDefaultTickets(tickets, switcherBoxes, switcherFastCheap, sortedStopsTickets ){
+    console.log(sortedStopsTickets);
     sortedStopsTickets = sortStops(tickets, switcherBoxes )
 
     let sortedTickets = switchFunction(sortedStopsTickets, switcherFastCheap)
@@ -16,7 +16,7 @@ function setDefaultTickets(tickets, switcherBoxes, switcherFastCheap){
 }
 
 
-function addEventListenerToCheckboxes(tickets, checkboxes, switcherFastCheap, switcherBoxes) {
+function addEventListenerToCheckboxes(tickets, checkboxes, switcherFastCheap, switcherBoxes, sortedStopsTickets) {
     checkboxes.forEach(e =>{
         e.onclick = function(event){
             onlyOne(event);
@@ -40,7 +40,7 @@ function addEventListenerToCheckboxes(tickets, checkboxes, switcherFastCheap, sw
 }
 
 
-function addEventListenerToFastest(fastestBtn, switcherFastCheap, fastestTickets) { 
+function addEventListenerToFastest(fastestBtn, switcherFastCheap, fastestTickets, sortedStopsTickets) { 
     fastestBtn.onclick = (e) => {
         switcherFastCheap = SwitcherFastCheap.FASTEST;
         fastestTickets = fastest(sortedStopsTickets)
@@ -52,7 +52,7 @@ function addEventListenerToFastest(fastestBtn, switcherFastCheap, fastestTickets
 
 }
 
-function addEventListenerToCheapest(cheapestBtn, switcherFastCheap, cheapestTickets){
+function addEventListenerToCheapest(cheapestBtn, switcherFastCheap, cheapestTickets, sortedStopsTickets){
     cheapestBtn.onclick = (e) => {
         switcherFastCheap = SwitcherFastCheap.CHEAPEST
         cheapestTickets = cheapest(sortedStopsTickets);
@@ -66,7 +66,7 @@ function addEventListenerToCheapest(cheapestBtn, switcherFastCheap, cheapestTick
 
 
 
-function switchFunction(switcherFastCheap) {
+function switchFunction(switcherFastCheap, sortedStopsTickets) {
     if (switcherFastCheap == SwitcherFastCheap.FASTEST) {
         return fastest(sortedStopsTickets)
     } else {
