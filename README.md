@@ -1,19 +1,13 @@
-
-Usage json server
-npm run start server
+# Aviasales
+Usage json server:
 npm i -D json-server
+npm json-server db.json
 
 
-
-Install
-
+Install:
 npm i
 
 
-Usage
-
-npm run start
-
-
+Usage:
 Open project with live server
 
