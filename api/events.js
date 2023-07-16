@@ -3,10 +3,11 @@ import { SwitcherFastCheap, SwitcherBoxes} from "./constant.js";
 import  render  from "./render.js";
 
 
+let sortedStopsTickets = [];
 
 
-function setDefaultTickets(tickets, switcherBoxes, switcherFastCheap, sortedStopsTickets ){
-    console.log(sortedStopsTickets);
+
+function setDefaultTickets(tickets, switcherBoxes, switcherFastCheap){
     sortedStopsTickets = sortStops(tickets, switcherBoxes )
 
     let sortedTickets = switchFunction(sortedStopsTickets, switcherFastCheap)
@@ -16,7 +17,7 @@ function setDefaultTickets(tickets, switcherBoxes, switcherFastCheap, sortedStop
 }
 
 
-function addEventListenerToCheckboxes(tickets, checkboxes, switcherFastCheap, switcherBoxes, sortedStopsTickets) {
+function addEventListenerToCheckboxes(tickets, checkboxes, switcherFastCheap, switcherBoxes) {
     checkboxes.forEach(e =>{
         e.onclick = function(event){
             onlyOne(event);
@@ -33,17 +34,16 @@ function addEventListenerToCheckboxes(tickets, checkboxes, switcherFastCheap, sw
 
         sortedStopsTickets = sortStops(tickets, Number(sortNumber))
         let sortedTickets = switchFunction(sortedStopsTickets, switcherFastCheap)
-
         render(sortedTickets)
         }
     })
 }
 
-
-function addEventListenerToFastest(fastestBtn, switcherFastCheap, fastestTickets, sortedStopsTickets, fastest) { 
+function addEventListenerToFastest(fastestBtn, fastestTickets, switcherFastCheap) { 
     fastestBtn.onclick = (e) => {
         switcherFastCheap = SwitcherFastCheap.FASTEST;
         fastestTickets = fastest(sortedStopsTickets)
+
 
         setActive(e)
 
@@ -52,7 +52,7 @@ function addEventListenerToFastest(fastestBtn, switcherFastCheap, fastestTickets
 
 }
 
-function addEventListenerToCheapest(cheapestBtn, cheapest, switcherFastCheap,  cheapestTickets,  sortedStopsTickets){
+function addEventListenerToCheapest(cheapestBtn, cheapestTickets,  switcherFastCheap){
     cheapestBtn.onclick = (e) => {
         switcherFastCheap = SwitcherFastCheap.CHEAPEST
         cheapestTickets = cheapest(sortedStopsTickets);

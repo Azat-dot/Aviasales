@@ -12,15 +12,8 @@ let tickets = await getTickets();
 let switcherFastCheap = SwitcherFastCheap.CHEAPEST;
 let switcherBoxes = SwitcherBoxes.ALL;
 
-let sortedStopsTickets = {};
-let fastestTickets = {};
-let cheapestTickets = {};
-
-
-
-
-
-
+let fastestTickets = [];
+let cheapestTickets = [];
 
 
 
@@ -29,10 +22,10 @@ let cheapestTickets = {};
 window.addEventListener("load", async  function() { 
 
     setDefaultStop(checkboxes)
-    setDefaultTickets(tickets, switcherBoxes, switcherFastCheap, sortedStopsTickets)
-    addEventListenerToCheckboxes(tickets, checkboxes, switcherFastCheap, switcherBoxes, sortedStopsTickets)
-    addEventListenerToFastest(fastestBtn, switcherFastCheap, fastestTickets, sortedStopsTickets);
-    addEventListenerToCheapest(cheapestBtn, switcherFastCheap, cheapestTickets, sortedStopsTickets);
+    setDefaultTickets(tickets, switcherBoxes, switcherFastCheap )
+    addEventListenerToCheckboxes(tickets, checkboxes, switcherFastCheap, switcherBoxes)
+    addEventListenerToFastest(fastestBtn, fastestTickets, switcherFastCheap  );
+    addEventListenerToCheapest(cheapestBtn, cheapestTickets, switcherFastCheap );
 
 })
 
