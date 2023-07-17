@@ -23,7 +23,7 @@ window.addEventListener("load", async  function() {
 
     setDefaultStop(checkboxes)
     setDefaultTickets(tickets, switcherBoxes, switcherFastCheap )
-    addEventListenerToCheckboxes(tickets, checkboxes, switcherFastCheap, switcherBoxes)
+    addEventListenerToCheckboxes(tickets, checkboxes, switcherFastCheap, switcherBoxes, cheapestBtn, fastestBtn)
     addEventListenerToFastest(fastestBtn, fastestTickets, switcherFastCheap  );
     addEventListenerToCheapest(cheapestBtn, cheapestTickets, switcherFastCheap );
 

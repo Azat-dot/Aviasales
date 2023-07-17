@@ -1,4 +1,5 @@
 import { cheapest, fastest, sortStops} from "./api.js";
+import { cheapestBtn, fastestBtn } from "./app.js";
 import { SwitcherFastCheap, SwitcherBoxes} from "./constant.js";
 import  render  from "./render.js";
 
@@ -17,7 +18,7 @@ function setDefaultTickets(tickets, switcherBoxes, switcherFastCheap){
 }
 
 
-function addEventListenerToCheckboxes(tickets, checkboxes, switcherFastCheap, switcherBoxes, cheapestBtn) {
+function addEventListenerToCheckboxes(tickets, checkboxes, switcherFastCheap, switcherBoxes, cheapestBtn, fastestBtn) {
     checkboxes.forEach(e =>{
         e.onclick = function(event){
             onlyOne(event);
@@ -40,13 +41,15 @@ function addEventListenerToCheckboxes(tickets, checkboxes, switcherFastCheap, sw
                         switcherBoxes = SwitcherBoxes.ALL;
                 }
 
-        
+
         sortedStopsTickets = sortStops(tickets, Number(sortNumber))
         let sortedTickets = switchFunction(sortedStopsTickets, switcherFastCheap)
 
+        setActiveDefault(event, cheapestBtn, fastestBtn)
 
         render(sortedTickets)
         }
+
     })
 }
 
@@ -88,13 +91,21 @@ function switchFunction(sortedStopsTickets, switcherFastCheap) {
 function setActive(event) {
     let target = event.target || event.srcElement
     let buttons = document.getElementsByName("btn")
-  
+
     buttons.forEach(button => {
         if (button === target ) {
-                return button.classList.add("btn_active");
+            return button.classList.add("btn_active");
         } 
         return button.classList.remove("btn_active");
     }) 
+}
+
+function setActiveDefault(event, cheapestBtn, fastestBtn) {
+    // let quickestButton = document.querySelector("#quick-btn")
+    // let cheapestButton = document.querySelector("#cheap-btn")
+    cheapestBtn.classList.add("btn_active")
+    fastestBtn.classList.remove("btn_active")
+
 }
 
 function onlyOne(e) {
