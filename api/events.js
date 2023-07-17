@@ -26,12 +26,16 @@ function addEventListenerToCheckboxes(tickets, checkboxes, switcherFastCheap, sw
                  switch(sortNumber) {    
                     case 0:
                         {switcherBoxes = SwitcherBoxes.WITHOUT_STOPS};
+                        break;
                     case 1:
                         {switcherBoxes = SwitcherBoxes.ONE_STOPS};
+                        break;
                     case 2:
                         {switcherBoxes = SwitcherBoxes.TWO_STOPS};
+                        break;
                     case 3:
                         {switcherBoxes = SwitcherBoxes.THREE_STOPS};
+                        break;
                     default:
                         {switcherBoxes = SwitcherBoxes.ALL};
                 }
