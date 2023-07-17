@@ -17,7 +17,7 @@ function setDefaultTickets(tickets, switcherBoxes, switcherFastCheap){
 }
 
 
-function addEventListenerToCheckboxes(tickets, checkboxes, switcherFastCheap, switcherBoxes) {
+function addEventListenerToCheckboxes(tickets, checkboxes, switcherFastCheap, switcherBoxes, cheapestBtn) {
     checkboxes.forEach(e =>{
         e.onclick = function(event){
             onlyOne(event);
@@ -43,6 +43,8 @@ function addEventListenerToCheckboxes(tickets, checkboxes, switcherFastCheap, sw
         
         sortedStopsTickets = sortStops(tickets, Number(sortNumber))
         let sortedTickets = switchFunction(sortedStopsTickets, switcherFastCheap)
+
+
         render(sortedTickets)
         }
     })
@@ -88,7 +90,7 @@ function setActive(event) {
     let buttons = document.getElementsByName("btn")
   
     buttons.forEach(button => {
-        if (button === target && !button.classList.contains("btn_active")) {
+        if (button === target ) {
                 return button.classList.add("btn_active");
         } 
         return button.classList.remove("btn_active");
