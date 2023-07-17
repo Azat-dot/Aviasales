@@ -101,11 +101,8 @@ function setActive(event) {
 }
 
 function setActiveDefault(event, cheapestBtn, fastestBtn) {
-    // let quickestButton = document.querySelector("#quick-btn")
-    // let cheapestButton = document.querySelector("#cheap-btn")
     cheapestBtn.classList.add("btn_active")
     fastestBtn.classList.remove("btn_active")
-
 }
 
 function onlyOne(e) {
