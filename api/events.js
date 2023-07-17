@@ -25,22 +25,22 @@ function addEventListenerToCheckboxes(tickets, checkboxes, switcherFastCheap, sw
 
                  switch(sortNumber) {    
                     case 0:
-                        {switcherBoxes = SwitcherBoxes.WITHOUT_STOPS};
+                        switcherBoxes = SwitcherBoxes.WITHOUT_STOPS;
                         break;
                     case 1:
-                        {switcherBoxes = SwitcherBoxes.ONE_STOPS};
+                        switcherBoxes = SwitcherBoxes.ONE_STOPS;
                         break;
                     case 2:
-                        {switcherBoxes = SwitcherBoxes.TWO_STOPS};
+                        switcherBoxes = SwitcherBoxes.TWO_STOPS;
                         break;
                     case 3:
-                        {switcherBoxes = SwitcherBoxes.THREE_STOPS};
+                        switcherBoxes = SwitcherBoxes.THREE_STOPS;
                         break;
                     default:
-                        {switcherBoxes = SwitcherBoxes.ALL};
+                        switcherBoxes = SwitcherBoxes.ALL;
                 }
 
-
+        
         sortedStopsTickets = sortStops(tickets, Number(sortNumber))
         let sortedTickets = switchFunction(sortedStopsTickets, switcherFastCheap)
         render(sortedTickets)
