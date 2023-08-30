@@ -1,13 +1,14 @@
 # Aviasales
-Usage json server:
-npm i -D json-server
-npm json-server db.json
+
+## Usage json server:
+- npm i -D json-server
+- npm json-server db.json
 
 
-Install:
-npm i
+## Install:
+- npm i
 
 
-Usage:
-Open project with live server
+## Usage:
+- Open project with live server
 
